@@ -1,0 +1,23 @@
+.header {
+  padding-top: 45px;
+}
+
+.header__line {
+  padding-top: 41px;
+  flex-grow: 1;
+  border-bottom: 1px solid #545445;
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    padding-top: 28px;
+  }
+
+  .header__logo {
+    max-width: 126px;
+  }
+
+  .header__line {
+    padding-top: 32px;
+  }
+}

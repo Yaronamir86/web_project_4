@@ -1,0 +1,22 @@
+.page {
+  max-width: 1280px;
+  margin: auto;
+  padding: 0;
+  padding-left: 200px;
+  padding-right: 200px;
+  background: #000000;
+  opacity: 1;
+  color: #ffffff;
+  font-family: "inter", arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+  position: relative;
+}
+
+@media screen and (max-width: 320px) {
+  .page {
+    max-width: 320px;
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+}

@@ -1,0 +1,71 @@
+.element__list {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 50px;
+  padding-bottom: 0;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 17px;
+  margin: 0;
+}
+
+.element__list-item {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  row-gap: 0;
+}
+
+.element__photo {
+  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.element__title {
+  margin: 0;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-top: 0;
+  padding-top: 25px;
+  padding-bottom: 31px;
+}
+
+.element__caption {
+  background: #ffffff;
+  color: #000000;
+  display: flex;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 21px;
+  padding-top: 0;
+  margin-top: 0;
+}
+.element__like-btn {
+  border: none;
+  background: #ffffff;
+  padding: 0;
+}
+.element__like-btn:hover {
+  opacity: 0.5;
+  transition: 0.2s;
+  cursor: url(/web_project_4/images/cursor.svg), pointer;
+}
+
+@media screen and (max-width: 320px) {
+  .element__list {
+    display: flex;
+    flex-direction: column;
+    padding-top: 36px;
+    gap: 20px;
+  }
+}
