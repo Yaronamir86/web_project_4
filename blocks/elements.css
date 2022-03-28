@@ -61,6 +61,10 @@
   cursor: url(/web_project_4/images/cursor.svg), pointer;
 }
 
+.element__like-btn_active {
+  margin: 0;
+}
+
 @media screen and (max-width: 320px) {
   .element__list {
     display: flex;

@@ -22,25 +22,19 @@ function openPopup() {
   popUpContainer.style.display = "block";
   inputName.value = profileName.textContent;
   inputAboutMe.value = profileAboutMe.textContent;
-};
+}
 
 function closePopup() {
   popUpContainer.style.display = "none";
-};
+}
 
 function formsubmit(event) {
-event.preventDefault();
-profileName.textContent = inputName.value;
-profileAboutMe.textContent = inputAboutMe.value;
-closePopup();
-};
-
+  event.preventDefault();
+  profileName.textContent = inputName.value;
+  profileAboutMe.textContent = inputAboutMe.value;
+  closePopup();
+}
 
 editBtn.addEventListener("click", openPopup);
-
 closeBtn.addEventListener("click", closePopup);
-
-popUpContainer.addEventListener("click", formsubmit);
-
-
-
+popUpContainer.addEventListener("submit", formsubmit);
