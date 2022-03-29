@@ -11,6 +11,7 @@
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .popup__container {
   width: 430px;
   height: 330px;
@@ -51,7 +52,7 @@
   font-weight: 400;
   line-height: 17px;
   padding: 0;
-  padding-top: 29px;
+  margin-top: 29px;
   text-align: left;
 }
 
@@ -69,6 +70,11 @@
   padding: 0;
   margin-top: 48px;
   line-height: 50px;
+}
+
+.popup__save-btn:hover {
+  opacity: 0.8;
+  cursor: url("../images/cursor.svg"), pointer;
 }
 
 .popup__close-btn {
