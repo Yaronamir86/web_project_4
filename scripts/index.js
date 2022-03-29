@@ -1,4 +1,4 @@
-let popUpContainer = document.querySelector(".popup__container");
+let popUpContainer = document.querySelector(".popup");
 
 let editBtn = document.querySelector(".profile__edit-btn");
 

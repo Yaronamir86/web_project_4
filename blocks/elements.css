@@ -16,6 +16,7 @@
   margin: 0;
   padding: 0;
   row-gap: 0;
+  max-width: 282px;
 }
 
 .element__photo {
@@ -23,19 +24,6 @@
   display: block;
   margin: 0;
   padding: 0;
-}
-
-.element__title {
-  margin: 0;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 900;
-  line-height: 29px;
-  letter-spacing: 0em;
-  text-align: left;
-  margin-top: 0;
-  padding-top: 25px;
-  padding-bottom: 31px;
 }
 
 .element__caption {
@@ -50,6 +38,23 @@
   padding-top: 0;
   margin-top: 0;
 }
+
+.element__title {
+  margin: 0;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-top: 0;
+  padding-top: 25px;
+  padding-bottom: 31px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .element__like-btn {
   border: none;
   background: #ffffff;
