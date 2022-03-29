@@ -86,16 +86,14 @@
 
 @media screen and (max-width: 320px) {
   .popup__container {
-    top: 123px;
-    left: 12px;
     max-width: 282px;
     height: 322px;
     box-sizing: border-box;
   }
 
   .popup__close-btn {
-    left: 258px;
-    top: -33px;
+    top: -31px;
+    right: 0;
   }
 
   .popoup__close-icon {

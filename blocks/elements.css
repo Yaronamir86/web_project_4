@@ -27,17 +27,17 @@
 }
 
 .element__caption {
-  background: #ffffff;
-  color: #000000;
-  display: flex;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  justify-content: space-between;
-  padding-left: 15px;
-  padding-right: 21px;
-  padding-top: 0;
-  margin-top: 0;
-}
+    background: #ffffff;
+    color: #000000;
+    display: flex;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 21px;
+    padding-top: 0;
+    margin-top: 0;
+  }
 
 .element__title {
   margin: 0;
@@ -52,8 +52,9 @@
   padding-bottom: 31px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: hidden; 
 }
+
 
 .element__like-btn {
   border: none;
