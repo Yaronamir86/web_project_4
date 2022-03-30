@@ -1,5 +1,12 @@
 .header {
   padding-top: 45px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.header__logo {
+  max-width: 176px;
 }
 
 .header__line {
@@ -19,5 +26,11 @@
 
   .header__line {
     padding-top: 32px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .header__logo {
+    align-self: flex-start;
   }
 }

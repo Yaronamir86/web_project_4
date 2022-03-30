@@ -129,3 +129,22 @@
     grid-column: 1/ -1;
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .profile {
+    flex-direction: column;
+  }
+
+  .profile__image {
+    align-self: center;
+  }
+
+  .profile__add-btn {
+    width: 282px;
+  }
+
+  .profile__name {
+    font-size: 24px;
+    line-height: 26px;
+  }
+}
