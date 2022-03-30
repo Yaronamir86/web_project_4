@@ -106,3 +106,19 @@
     width: 18px;
   }
 }
+
+@media screen and (min-width: 321px) and (max-width:600px){
+    .popup__container {
+        max-width: 290px;
+    }
+
+    .popup__close-btn {
+        top: -35px;
+        right: 0;
+      }
+    
+      .popoup__close-icon {
+        width: 19px;
+      }
+    }
+}
