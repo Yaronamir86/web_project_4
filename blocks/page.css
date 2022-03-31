@@ -12,14 +12,13 @@
   position: relative;
 }
 
-
 @media screen and (max-width: 1000px) {
-    .page {
-      max-width: 100%;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
+  .page {
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
   }
+}
 
 @media screen and (max-width: 320px) {
   .page {
@@ -28,4 +27,3 @@
     padding-right: 0;
   }
 }
-
