@@ -172,7 +172,8 @@
   
     .profile__add-btn {
       border: solid 2px #ffffff;
-      width: 282px;
+      width: 100%;
+      max-width: none;
     }
   
     .profile__add-btn:hover {
