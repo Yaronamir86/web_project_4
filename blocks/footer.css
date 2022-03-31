@@ -17,12 +17,13 @@
 
 @media screen and (max-width: 320px) {
   .footer {
-    padding-top: 30px;
-    padding-bottom: 36px;
+    padding: 30px 19px 36px 19px;
+  }
+
+  .footer__copyrights {
+    font-size: 14px;
+    line-height: 17px;
   }
 }
 
-.footer__copyrights {
-  font-size: 14px;
-  line-height: 17px;
-}
+

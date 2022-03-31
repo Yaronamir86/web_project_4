@@ -6,9 +6,9 @@ let editBtn = document.querySelector(".profile__edit-btn");
 
 let addBtn = document.querySelector(".profile__add-btn");
 
-let inputName = document.querySelector(".input__text_type_name");
+let inputName = document.querySelector(".popup__text_type_name");
 
-let inputAboutMe = document.querySelector(".input__text_type_about-me");
+let inputAboutMe = document.querySelector(".popup__text_type_about-me");
 
 let likeBtn = document.querySelector(".element__like-btn");
 
@@ -21,13 +21,13 @@ let saveBtn = document.querySelector(".popup__save-btn");
 let closeBtn = document.querySelector(".popup__close-btn");
 
 function openPopup() {
-  popUpOpen.classList.add("popup__opened");
+  popUpOpen.classList.add("popup_opened");
   inputName.value = profileName.textContent;
   inputAboutMe.value = profileAboutMe.textContent;
 }
 
 function closePopup() {
-  popUpOpen.classList.remove("popup__opened");
+  popUpOpen.classList.remove("popup_opened");
 }
 
 function formsubmit(event) {

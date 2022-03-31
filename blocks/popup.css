@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.popup__opened {
+.popup_opened {
   display: flex;
 }
 
@@ -28,6 +28,11 @@
   position: absolute;
   right: -44px;
   top: -44px;
+}
+
+.popup__close-btn:hover{
+    opacity: 0.8;
+    cursor: url("../images/cursor.svg"), pointer;  
 }
 
 .popup__form {
@@ -62,7 +67,7 @@
   max-width: 100%;
 }
 
-.input__text {
+.popup__text {
   border: none;
   font-size: 14px;
   font-style: normal;
@@ -73,7 +78,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.input__text_type_about-me {
+.popup__text_type_about-me {
   margin-top: 29px;
 }
 
@@ -124,10 +129,9 @@
 
   .popup__close-btn {
     top: -31px;
-    right: 0;
   }
 
-  .popoup__close-icon {
+  .popup__close-icon {
     width: 18px;
   }
 }

@@ -15,7 +15,7 @@
   align-self: center;
   display: grid;
   grid-template-columns: 373px 24px 0;
-  grid-template-rows: 48px 22px;
+  grid-template-rows: auto 22px;
   row-gap: 16px;
   column-gap: 18px;
   flex-grow: 1;
@@ -42,11 +42,13 @@
   margin: 0;
   width: 100%;
   grid-row: 2/-1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__edit-btn {
-  background-color: black; /*background is not transparent automaticly*/
-  width: 24px;
+  background-color: transparent; 
   height: 24px;
   border: none;
   margin: 0;
@@ -62,8 +64,9 @@
 }
 
 .profile__add-btn {
-  background-color: black;
+  background-color: transparent;
   border: 2px solid #ffffff;
+  border-radius: 2px;
   padding: 0;
   width: 150px;
   height: 50px;
@@ -107,7 +110,6 @@
   .profile__add-btn {
     max-width: 150px;
     margin: 0;
-    border: 2px solid #ffffff;
   }
 
   .profile__add-img {
@@ -146,7 +148,7 @@
     row-gap: 14px;
     display: grid;
     grid-template-columns: auto auto;
-    grid-template-rows: 27px 22px;
+    grid-template-rows: auto auto;
     padding-bottom: 36px;
     padding-top: 27px;
   }
@@ -168,7 +170,6 @@
   }
 
   .profile__add-btn {
-    border: solid 2px #ffffff;
     width: 100%;
     max-width: none;
   }
