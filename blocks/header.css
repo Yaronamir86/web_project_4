@@ -3,16 +3,20 @@
   display: flex;
   flex-direction: column;
   max-width: 100%;
+  border-bottom: 1px solid rgba(84, 84, 69, 0.7);
 }
 
 .header__logo {
   max-width: 176px;
+  padding-bottom: 41px;
+  
 }
 
-.header__line {
-  padding-top: 41px;
-  flex-grow: 1;
-  border-bottom: 1px solid #545445;
+
+@media screen and (max-width: 1000px) {
+  .header__logo {
+    align-self: flex-start;
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -21,16 +25,7 @@
   }
 
   .header__logo {
-    max-width: 126px;
-  }
-
-  .header__line {
-    padding-top: 32px;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .header__logo {
-    align-self: flex-start;
+    max-width: 100%;
+    padding-left: 27px;
   }
 }

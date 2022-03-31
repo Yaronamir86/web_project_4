@@ -12,18 +12,20 @@
   position: relative;
 }
 
+
+@media screen and (max-width: 1000px) {
+    .page {
+      max-width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
 @media screen and (max-width: 320px) {
   .page {
     max-width: 320px;
-    padding-left: 19px;
-    padding-right: 19px;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
-@media screen and (min-width: 321px) and (max-width: 1000px) {
-  .page {
-    max-width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}

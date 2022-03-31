@@ -59,8 +59,9 @@
 
 .element__like-btn {
   border: none;
-  background: #ffffff;
   padding: 0;
+  margin: 0;
+  background-color: #ffffff; /*if i remove this declare it changes the background color to grey*/
 }
 .element__like-btn:hover {
   opacity: 0.5;
@@ -79,5 +80,7 @@
     flex-direction: column;
     padding-top: 36px;
     gap: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }

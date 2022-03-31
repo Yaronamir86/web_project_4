@@ -1,4 +1,6 @@
-let popUpContainer = document.querySelector(".popup");
+let popUpOpen = document.querySelector(".popup");
+
+let popUpForm = document.querySelector(".popup__form");
 
 let editBtn = document.querySelector(".profile__edit-btn");
 
@@ -19,22 +21,22 @@ let saveBtn = document.querySelector(".popup__save-btn");
 let closeBtn = document.querySelector(".popup__close-btn");
 
 function openPopup() {
-  popUpContainer.style.display = "block";
+  popUpOpen.classList.add("popup__opened");
   inputName.value = profileName.textContent;
   inputAboutMe.value = profileAboutMe.textContent;
 }
 
 function closePopup() {
-  popUpContainer.style.display = "none";
+  popUpOpen.classList.remove("popup__opened");
 }
 
 function formsubmit(event) {
   event.preventDefault();
   profileName.textContent = inputName.value;
   profileAboutMe.textContent = inputAboutMe.value;
+
   closePopup();
 }
-
-editBtn.addEventListener("click", openPopup);
+popUpForm.addEventListener("submit", formsubmit);
 closeBtn.addEventListener("click", closePopup);
-popUpContainer.addEventListener("submit", formsubmit);
+editBtn.addEventListener("click", openPopup);

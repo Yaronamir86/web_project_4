@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./pages/index.css" />
     <title>around the u.s</title>
   </head>
-  <body>
+  <body class="body">
     <div class="page">
       <header class="header">
         <img
@@ -18,7 +18,6 @@
           src="./images/logo.svg"
           alt="around the u.s logo"
         />
-        <div class="header__line"></div>
       </header>
       <main class="content">
         <section class="profile">
@@ -28,18 +27,18 @@
             alt="Jacques Cousteau photo"
           />
           <div class="profile__info">
-            <p class="profile__name">Jacques Cousteau</p>
-            <button class="profile__edit-btn">
-              <img
+            <h1 class="profile__name">Jacques Cousteau</h1>
+            <button class="profile__edit-btn" type="button" aria-label="edit">
+                <img
                 class="profile__edit-img"
                 src="./images/Edit-Button.svg"
                 alt="edit-btn image"
-              />
+              />   
             </button>
             <p class="profile__about-me">Explorer</p>
           </div>
-          <div class="profile__divider"></div>
-          <button class="profile__add-btn">
+
+          <button class="profile__add-btn" type="button" aria-label="add">
             <img
               class="profile__add-img"
               src="./images/plus-sign.svg"
@@ -47,7 +46,7 @@
             />
           </button>
         </section>
-        <section class="elements">
+        <section class="element">
           <ul class="element__list">
             <li class="element__list-item">
               <img
@@ -57,7 +56,7 @@
               />
               <div class="element__caption">
                 <h2 class="element__title">Yosemite Valley</h2>
-                <button class="element__like-btn">
+                <button class="element__like-btn" type="button" aria-label="like">
                   <img
                     class="element__like-sign"
                     src="./images/like-sign.svg"
@@ -74,7 +73,7 @@
               />
               <div class="element__caption">
                 <h2 class="element__title">Lake Louise</h2>
-                <button class="element__like-btn">
+                <button class="element__like-btn" type="button" aria-label="like">
                   <img
                     class="element__like-sign"
                     src="./images/like-sign.svg"
@@ -91,7 +90,7 @@
               />
               <div class="element__caption">
                 <h2 class="element__title">Bald Mountains</h2>
-                <button class="element__like-btn">
+                <button class="element__like-btn" type="button" aria-label="like">
                   <img
                     class="element__like-sign"
                     src="./images/like-sign.svg"
@@ -108,7 +107,7 @@
               />
               <div class="element__caption">
                 <h2 class="element__title">Latemar</h2>
-                <button class="element__like-btn">
+                <button class="element__like-btn" type="button" aria-label="like">
                   <img
                     class="element__like-sign"
                     src="./images/like-sign.svg"
@@ -125,7 +124,7 @@
               />
               <div class="element__caption">
                 <h2 class="element__title">Vanoise National park</h2>
-                <button class="element__like-btn">
+                <button class="element__like-btn" type="button" aria-label="like">
                   <img
                     class="element__like-sign"
                     src="./images/like-sign.svg"
@@ -142,7 +141,7 @@
               />
               <div class="element__caption">
                 <h2 class="element__title">Lago di Braies</h2>
-                <button class="element__like-btn">
+                <button class="element__like-btn" type="button" aria-label="like">
                   <img
                     class="element__like-sign"
                     src="./images/like-sign.svg"
@@ -153,37 +152,39 @@
             </li>
           </ul>
         </section>
-        <section class="popup popup__opend">
-          <form class="popup__container">
-            <button class="popup__close-btn">
-              <img
-                class="popoup__close-icon"
-                src="./images/Close-Icon.svg"
-                alt="closing tag"
-              />
-            </button>
-            <h2 class="popup__title">Edit profile</h2>
-            <div class="popup__input">
-              <input
-                type="text"
-                placeholder="name"
-                class="input__text input__text_type_name"
-              />
-              <div class="popup__line"></div>
-              <input
-                type="text"
-                placeholder="about me"
-                class="input__text input__text_type_about-me"
-              />
-              <div class="popup__line"></div>
-              <button class="popup__save-btn">save</button>
-            </div>
-          </form>
-        </section>
       </main>
       <footer class="footer">
         <p class="footer__copyrights">© 2022 Around The U.S.</p>
       </footer>
+      <div class="popup">
+        <div class="popup__container">
+          <button class="popup__close-btn" type="button" aria-label="close">
+            <img
+              class="popoup__close-icon"
+              src="./images/Close-Icon.svg"
+              alt="closing tag"
+            />
+          </button>
+          <form class="popup__form" name="popup__form">
+            <h2 class="popup__title">Edit profile</h2>
+            <div class="popup__input">
+              <input
+                type="text"
+                name="name"
+                placeholder="name"
+                class="input__text input__text_type_name"
+              />
+              <input
+                type="text"
+                name="about-me"
+                placeholder="about me"
+                class="input__text input__text_type_about-me"
+              />
+              <button class="popup__save-btn" type="submit">save</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
     <script src="./scripts/index.js"></script>
   </body>
