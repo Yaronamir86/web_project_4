@@ -125,8 +125,12 @@
   .popup__title {
     font-size: 18px;
     line-height: 22px;
+    padding: 25px 22px 0 22px;
   }
 
+.popup__input{
+  padding: 77px 22px 25px 22px;
+}
   .popup__close-btn {
     top: -31px;
   }
