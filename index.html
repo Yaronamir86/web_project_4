@@ -49,6 +49,13 @@
         <section class="element">
           <ul class="element__list">
             <li class="element__list-item">
+              <button class="element__trash-btn" 
+              type="button"
+              aria-label="trash">
+              <img class="element__trash-icon"
+               src="./images/Trash.svg"
+                alt="trash-icon">
+            </button>
               <img
                 class="element__photo"
                 src="./images/image1.png"
@@ -70,6 +77,13 @@
               </div>
             </li>
             <li class="element__list-item">
+              <button class="element__trash-btn" 
+              type="button"
+              aria-label="trash">
+              <img class="element__trash-icon"
+               src="./images/Trash.svg"
+                alt="trash-icon">
+            </button>
               <img
                 class="element__photo"
                 src="./images/image4.png"
@@ -91,6 +105,13 @@
               </div>
             </li>
             <li class="element__list-item">
+              <button class="element__trash-btn" 
+              type="button"
+              aria-label="trash">
+              <img class="element__trash-icon"
+               src="./images/Trash.svg"
+                alt="trash-icon">
+            </button>
               <img
                 class="element__photo"
                 src="./images/image6.png"
@@ -112,6 +133,13 @@
               </div>
             </li>
             <li class="element__list-item">
+              <button class="element__trash-btn" 
+              type="button"
+              aria-label="trash">
+              <img class="element__trash-icon"
+               src="./images/Trash.svg"
+                alt="trash-icon">
+            </button>
               <img
                 class="element__photo"
                 src="./images/image3.png"
@@ -133,6 +161,13 @@
               </div>
             </li>
             <li class="element__list-item">
+              <button class="element__trash-btn" 
+              type="button"
+              aria-label="trash">
+              <img class="element__trash-icon"
+               src="./images/Trash.svg"
+                alt="trash-icon">
+            </button>
               <img
                 class="element__photo"
                 src="./images/image5.png"
@@ -154,6 +189,13 @@
               </div>
             </li>
             <li class="element__list-item">
+              <button class="element__trash-btn" 
+              type="button"
+              aria-label="trash">
+              <img class="element__trash-icon"
+               src="./images/Trash.svg"
+                alt="trash-icon">
+            </button>
               <img
                 class="element__photo"
                 src="./images/image2.png"
@@ -180,6 +222,7 @@
       <footer class="footer">
         <p class="footer__copyrights">© 2022 Around The U.S.</p>
       </footer>
+      <!--  edit-profile-popup-->
       <div class="popup">
         <div class="popup__container">
           <button class="popup__close-btn" type="button" aria-label="close">
@@ -206,8 +249,38 @@
               />
               <button class="popup__save-btn" type="submit">save</button>
             </div>
-          </form>
+          </form> 
         </div>
+      </div>
+      <!--add-image-popup-->
+      <div class="place-modal">
+        <div class="place-modal__container">
+          <button class="place-modal__close-btn" type="button" aria-label="close">
+            <img
+              class="place-modal__close-icon"
+              src="./images/Close-Icon.svg"
+              alt="closing tag"
+            />
+          </button>
+      <form class="place-modal__form" name="place-modal__form">
+        <h2 class="place-modal__title">New place</h2>
+        <div class="place-modal__input">
+          <input
+            type="text"
+            name="Title"
+            placeholder="Title"
+            class="place-modal__text place-modal__text_type_title"
+          />
+          <input
+            type="text"
+            name="Image link"
+            placeholder="Image link"
+            class="place-modal__text place-modal__text_type_Image-link"
+          />
+          <button class="place-modal__create-btn" type="submit">Create</button>
+        </div>
+      </form>
+      </div>
       </div>
     </div>
     <script src="./scripts/index.js"></script>

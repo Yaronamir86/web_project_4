@@ -94,7 +94,7 @@
 
 .popup__save-btn:hover {
   opacity: 0.8;
-  cursor: url("../images/cursor.svg"), pointer;
+  cursor: pointer;
 }
 
 .popoup__close-icon {
