@@ -1,3 +1,6 @@
+/////////////////////
+////declatrations////
+////////////////////
 const popUpOpen = document.querySelector(".popup");
 
 const popUpForm = document.querySelector(".popup__form");
@@ -32,7 +35,39 @@ const placeTitle = document.querySelector(".place-modal__title");
 
 const placeImage = document.querySelector(".place-modal__image");
 
+const list = document.querySelector(".element__list");
 
+const listItem = document.querySelector(".element__list-item");
+
+const initialCards = [
+  {
+    name: "Yosemite Valley",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+  },
+  {
+    name: "Lake Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg",
+  },
+];
+
+//////////wrappers////
+const placesList = document.querySelector(".element__list");
 
 //////////edit-profile-functions////////////////////////
 
@@ -52,37 +87,41 @@ function formsubmit(event) {
   profileAboutMe.textContent = inputAboutMe.value;
 
   closePopup();
-  }
-
-  
-
-  popUpForm.addEventListener("submit", formsubmit);
-  popupCloseBtn.addEventListener("click", closePopup);
-  editBtn.addEventListener("click", openPopup);
-  
-
-  ////////////add-image-functions//////////////////////
-
-
-  function openPlaceModal() {
-    placeModalOpen.classList.add("place-modal_opened");
-    inputName.value = profileName.textContent;
-    inputAboutMe.value = profileAboutMe.textContent; 
-  }
-  
-  function closePlaceModal() {
-    placeModalOpen.classList.remove("place-modal_opened");
-  }
-  
-  function formsubmit(event) {
-    event.preventDefault();
-    profileName.textContent = inputName.value;
-    profileAboutMe.textContent = inputAboutMe.value;
-  
-    
 }
 
+////////////add-image-functions//////////////////////
+
+function openPlaceModal() {
+  placeModalOpen.classList.add("place-modal_opened");
+}
+
+function closePlaceModal() {
+  placeModalOpen.classList.remove("place-modal_opened");
+}
 
 addBtn.addEventListener("click", openPlaceModal);
-placeCloseBtn.addEventListener("click",closePlaceModal);
 
+placeCloseBtn.addEventListener("click", closePlaceModal);
+
+popUpForm.addEventListener("submit", formsubmit);
+
+popupCloseBtn.addEventListener("click", closePopup);
+
+editBtn.addEventListener("click", openPopup);
+
+initialCards.forEach(card => {
+  const cardTamplate = document.querySelector("#card-tamplate").content.querySelector(".element__list-item");
+
+  const cardElement = cardTamplate.cloneNode(true);
+
+  const cardImage = document.querySelector(".element__photo");
+
+  const cardtTitle = document.querySelector(".element__title");
+
+  cardImage.src = `url(${card.link})`;
+  cardtTitle.textContent = card.name;
+
+  placesList.append(cardElement);
+});
+
+//////////eventlisteners/////////

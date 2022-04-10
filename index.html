@@ -48,7 +48,7 @@
         </section>
         <section class="element">
           <ul class="element__list">
-            <li class="element__list-item">
+           <!-- <li class="element__list-item">
               <button class="element__trash-btn" 
               type="button"
               aria-label="trash">
@@ -215,7 +215,7 @@
                   />
                 </button>
               </div>
-            </li>
+            </li>-->
           </ul>
         </section>
       </main>
@@ -284,5 +284,35 @@
       </div>
     </div>
     <script src="./scripts/index.js"></script>
+    <template id="card-tamplate">
+      <li class="element__list-item">
+        <button class="element__trash-btn" 
+        type="button"
+        aria-label="trash">
+        <img class="element__trash-icon"
+         src="./images/Trash.svg"
+          alt="trash-icon">
+      </button>
+        <img
+          class="element__photo"
+          src=""
+          alt="photo of river and green trees"
+        />
+        <div class="element__caption">
+          <h2 class="element__title"></h2>
+          <button
+            class="element__like-btn"
+            type="button"
+            aria-label="like"
+          >
+            <img
+              class="element__like-sign"
+              src="./images/like-sign.svg"
+              alt="like sign"
+            />
+          </button>
+        </div>
+      </li>
+    </template>
   </body>
 </html>
