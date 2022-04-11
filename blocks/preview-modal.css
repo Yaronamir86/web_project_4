@@ -1,4 +1,4 @@
-.previw-modal {
+.preview-modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -11,17 +11,18 @@
     align-items: center;
   }
   
-  .previw-modal_opened {
+  .preview-modal_opened {
     display: flex;
   }
   
-  .previw-modal__container {
+  .preview-modal__container {
     display: flex;
     margin: auto;
     position: relative;
+    width: 75vw;
   }
   
-  .previw-modal__close-btn {
+  .preview-modal__close-btn {
     background: none;
     border: none;
     align-self: center;
@@ -30,7 +31,7 @@
     top: -44px;
   }
   
-  .previw-modal__close-btn:hover{
+  .preview-modal__close-btn:hover{
       opacity: 0.8;
       cursor: url("../images/cursor.svg"), pointer;  
   }

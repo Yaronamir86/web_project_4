@@ -1,6 +1,10 @@
 /////////////////////
 ////declatrations////
 ////////////////////
+
+
+////profile popup/////////////////////////////////
+
 const popUpOpen = document.querySelector(".popup");
 
 const popUpForm = document.querySelector(".popup__form");
@@ -13,35 +17,17 @@ const inputName = document.querySelector(".popup__text_type_name");
 
 const inputAboutMe = document.querySelector(".popup__text_type_about-me");
 
-const likeBtn = document.querySelector(".element__like-btn");
-
-const profileName = document.querySelector(".profile__name");
-
-const profileAboutMe = document.querySelector(".profile__about-me");
-
 const saveBtn = document.querySelector(".popup__save-btn");
 
 const popupCloseBtn = document.querySelector(".popup__close-btn");
 
-const placeForm = document.querySelector(".place-modal__form");
-
-const previewModalOpen = document.querySelector(".preview-modal");
-
-const previewCloseBtn = document.querySelector(".previw-modal__close-btn");
-
-const placeModalOpen = document.querySelector(".place-modal");
-
-const placeCloseBtn = document.querySelector(".place-modal__close-btn");
-
-const createBtn = document.querySelector(".place-modal__create-btn");
-
-const placeTitle = document.querySelector(".place-modal__title");
-
-const placeImage = document.querySelector(".place-modal__image");
+//////card declares/////////////////////////////////
 
 const list = document.querySelector(".element__list");
 
 const listItem = document.querySelector(".element__list-item");
+
+const likeBtn = document.querySelector(".element__like-btn");
 
 const initialCards = [
   {
@@ -70,9 +56,43 @@ const initialCards = [
   },
 ];
 
+////////profile declares////////////////////////////////////
+
+const profileName = document.querySelector(".profile__name");
+
+const profileAboutMe = document.querySelector(".profile__about-me");
+
+
+///////place-modal declares///////////////////////////////////
+
+const placeModalOpen = document.querySelector(".place-modal");
+
+const placeCloseBtn = document.querySelector(".place-modal__close-btn");
+
+const placeForm = document.querySelector(".place-modal__form");
+
+const placeTitle = document.querySelector(".place-modal__title");
+
+const placeImage = document.querySelector(".place-modal__image");
+
+const createBtn = document.querySelector(".place-modal__create-btn");
+
+///////preview-modal declares//////////////////////////////////////
+
+const previewModalOpen = document.querySelector(".preview-modal");
+
+const previewCloseBtn = document.querySelector(".preview-modal__close-btn");
+
+const previewImage = document.querySelector(".preview-modal__image");
+
+
+
 //////////wrappers////
 const placesList = document.querySelector(".element__list");
 ////////////////////
+
+
+
 
 ////////////////////////////
 //////////FUNCTIONS/////////
@@ -113,8 +133,12 @@ function closePlaceModal() {
 
 ///////////preview-modal-function///////////
 
-function openPreviewModal() {
+function openPreviewModal(card) {
+  previewImage.src = card.link;
   previewModalOpen.classList.add("preview-modal_opened");
+ 
+
+
 }
 
 function closePreviewModal() {
@@ -132,17 +156,13 @@ function createCardElement(card) {
 
   const cardImage = cardElement.querySelector(".element__photo");
 
-  const cardtTitle = cardElement.querySelector(".element__title");
+  const cardTitle = cardElement.querySelector(".element__title");
 
   cardImage.src = card.link;
-  cardtTitle.textContent = card.name;
+  cardTitle.textContent = card.name;
 
   cardImage.addEventListener("click", openPreviewModal);
-   // handle image click
-
-  //likeBtn.addEventListener("click", () => {
-
-  //}); // handle like button
+ 
 
   return cardElement;
 }
@@ -161,6 +181,10 @@ initialCards.forEach(card => renderCard(card, placesList));
 addBtn.addEventListener("click", openPlaceModal);
 
 placeCloseBtn.addEventListener("click", closePlaceModal);
+
+previewImage.addEventListener("click", openPreviewModal);
+
+previewCloseBtn.addEventListener("click", closePreviewModal);
 
 popUpForm.addEventListener("submit", formsubmit);
 
