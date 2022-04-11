@@ -25,6 +25,10 @@ const popupCloseBtn = document.querySelector(".popup__close-btn");
 
 const placeForm = document.querySelector(".place-modal__form");
 
+const previewModalOpen = document.querySelector(".preview-modal");
+
+const previewCloseBtn = document.querySelector(".previw-modal__close-btn");
+
 const placeModalOpen = document.querySelector(".place-modal");
 
 const placeCloseBtn = document.querySelector(".place-modal__close-btn");
@@ -68,8 +72,15 @@ const initialCards = [
 
 //////////wrappers////
 const placesList = document.querySelector(".element__list");
+////////////////////
 
-//////////edit-profile-functions////////////////////////
+////////////////////////////
+//////////FUNCTIONS/////////
+////////////////////////////
+
+
+
+//////////popup-functions////////////////////////
 
 function openPopup() {
   popUpOpen.classList.add("popup_opened");
@@ -89,7 +100,7 @@ function formsubmit(event) {
   closePopup();
 }
 
-////////////add-image-functions//////////////////////
+////////////place-modal-functions//////////////////////
 
 function openPlaceModal() {
   placeModalOpen.classList.add("place-modal_opened");
@@ -98,6 +109,54 @@ function openPlaceModal() {
 function closePlaceModal() {
   placeModalOpen.classList.remove("place-modal_opened");
 }
+
+
+///////////preview-modal-function///////////
+
+function openPreviewModal() {
+  previewModalOpen.classList.add("preview-modal_opened");
+}
+
+function closePreviewModal() {
+  previewModalOpen.classList.remove("preview-modal_opened");
+}
+
+
+
+/////////cards functions//////////
+
+function createCardElement(card) {
+  const cardTemplate = document.querySelector("#card-template").content.querySelector(".element__list-item");
+
+  const cardElement = cardTemplate.cloneNode(true);
+
+  const cardImage = cardElement.querySelector(".element__photo");
+
+  const cardtTitle = cardElement.querySelector(".element__title");
+
+  cardImage.src = card.link;
+  cardtTitle.textContent = card.name;
+
+  cardImage.addEventListener("click", openPreviewModal);
+   // handle image click
+
+  //likeBtn.addEventListener("click", () => {
+
+  //}); // handle like button
+
+  return cardElement;
+}
+
+
+
+function renderCard(card, wrapper) {
+
+wrapper.append(createCardElement(card));
+}
+
+initialCards.forEach(card => renderCard(card, placesList));
+
+//////////eventlisteners/////////
 
 addBtn.addEventListener("click", openPlaceModal);
 
@@ -109,19 +168,5 @@ popupCloseBtn.addEventListener("click", closePopup);
 
 editBtn.addEventListener("click", openPopup);
 
-initialCards.forEach(card => {
-  const cardTamplate = document.querySelector("#card-tamplate").content.querySelector(".element__list-item");
 
-  const cardElement = cardTamplate.cloneNode(true);
 
-  const cardImage = document.querySelector(".element__photo");
-
-  const cardtTitle = document.querySelector(".element__title");
-
-  cardImage.src = `url(${card.link})`;
-  cardtTitle.textContent = card.name;
-
-  placesList.append(cardElement);
-});
-
-//////////eventlisteners/////////

@@ -4,7 +4,6 @@
   padding-top: 50px;
   padding-bottom: 0;
   max-width: 100%;
-
   display: grid;
   grid-template-columns: repeat(auto-fit, 282px);
   justify-content: center;
@@ -38,10 +37,15 @@
 }
 
 .element__photo {
-  max-width: 100%;
+  width: 100%;
   display: block;
   margin: 0;
   padding: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  object-fit: cover;
+  min-height: 282px;
+  max-height: 282px;
 }
 
 .element__caption {
