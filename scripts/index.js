@@ -75,7 +75,9 @@ const createBtn = document.querySelector(".place-modal__create-btn");
 
 const placeInputTitle = document.querySelector(".place-modal__text_type_title");
 
-const placeInputlink = document.querySelector(".place-modal__text_type_image-link");
+const placeInputlink = document.querySelector(
+  ".place-modal__text_type_image-link"
+);
 
 ///////preview-modal declares//////////////////////////////////////
 
@@ -103,12 +105,16 @@ function activeClass(component, cl) {
 
 function createCard(card) {
   const cardTemplate = document.querySelector("#card-template").content;
-  const cardElement = cardTemplate.querySelector(".element__list-item").cloneNode(true);
+  const cardElement = cardTemplate
+    .querySelector(".element__list-item")
+    .cloneNode(true);
   const cardImage = cardElement.querySelector(".element__photo");
   const cardTitle = cardElement.querySelector(".element__title");
   const deleteBtn = cardElement.querySelector(".element__trash-btn");
   const likeBtn = cardElement.querySelector(".element__like-btn");
-  likeBtn.addEventListener("click", () => activeClass(likeBtn, "element__like-btn_active"));//likeBtn.addEventListener("click", () => toggleclass(likeBtn, "element__like-btn_active"));
+  likeBtn.addEventListener("click", () =>
+    activeClass(likeBtn, "element__like-btn_active")
+  ); //likeBtn.addEventListener("click", () => toggleclass(likeBtn, "element__like-btn_active"));
   deleteBtn.addEventListener("click", () => cardElement.remove());
   cardImage.src = card.link;
   cardImage.alt = `a beautiful place in ${card.name}`;
@@ -121,8 +127,6 @@ function createCard(card) {
 function renderCard(card, list) {
   list.prepend(createCard(card));
 }
-
-
 
 initialCards.forEach((card) => renderCard(card, placesList));
 
@@ -167,7 +171,6 @@ function openPreviewModal(card) {
 function closePreviewModal() {
   previewModalOpen.classList.remove("preview-modal_opened");
 }
-
 
 /////////add-card-function////////////////////////////////
 function addCard(event) {
