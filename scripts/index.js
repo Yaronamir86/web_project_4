@@ -83,6 +83,8 @@ const previewModalOpen = document.querySelector(".preview-modal");
 
 const previewCloseBtn = document.querySelector(".preview-modal__close-btn");
 
+const previewTitle = document.querySelector(".preview__title");
+
 const previewImage = document.querySelector(".preview-modal__image");
 
 //////////wrappers////
@@ -158,6 +160,7 @@ function closePlaceModal() {
 
 function openPreviewModal(card) {
   previewImage.src = card.link;
+  previewTitle.textContent = card.name;
   previewModalOpen.classList.add("preview-modal_opened");
 }
 
