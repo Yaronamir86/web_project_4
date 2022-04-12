@@ -48,7 +48,7 @@
 }
 
 .profile__edit-btn {
-  background-color: transparent; 
+  background-color: transparent;
   height: 24px;
   border: none;
   margin: 0;
@@ -77,7 +77,7 @@
 .profile__add-btn:hover {
   opacity: 0.6;
   transition: ease-in-out 0.2s;
-  cursor: url("../images/cursor.svg"), pointer;
+  cursor: pointer;
 }
 
 .profile__add-img {

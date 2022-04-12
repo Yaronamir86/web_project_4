@@ -90,7 +90,7 @@
 .element__like-btn:hover {
   opacity: 0.5;
   transition: 0.2s;
-  cursor: url("../images/cursor.svg"), pointer;
+  cursor: pointer;
 }
 
 .element__like-btn_active {
