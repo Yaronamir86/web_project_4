@@ -32,7 +32,8 @@
   
   .place-modal__close-btn:hover{
       opacity: 0.8;
-      cursor: url("../images/cursor.svg"), pointer;  
+      transition: 0.4s;
+      cursor: pointer;  
   }
   
   .place-modal__form {
@@ -95,7 +96,8 @@
   
   .place-modal__create-btn:hover {
     opacity: 0.8;
-    cursor: url("../images/cursor.svg"), pointer;
+    transition: 0.4s;
+    cursor: pointer;
   }
   
   .place-modal__close-icon {
