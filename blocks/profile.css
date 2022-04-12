@@ -60,7 +60,7 @@
 
 .profile__edit-btn:hover {
   opacity: 0.6;
-  transition: ease-in-out 0.2s;
+  transition: ease-in-out 0.4s;
 }
 
 .profile__add-btn {
@@ -76,7 +76,7 @@
 
 .profile__add-btn:hover {
   opacity: 0.6;
-  transition: ease-in-out 0.2s;
+  transition: ease-in-out 0.4s;
   cursor: pointer;
 }
 

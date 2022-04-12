@@ -32,7 +32,7 @@
 
 .element__trash-btn:hover {
   opacity: 0.5;
-  transition: 0.2s;
+  transition: 0.4s;
   cursor: pointer;
 }
 
@@ -89,7 +89,7 @@
 }
 .element__like-btn:hover {
   opacity: 0.5;
-  transition: 0.2s;
+  transition: 0.4s ease-in-out;
   cursor: pointer;
 }
 
