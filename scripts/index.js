@@ -85,7 +85,7 @@ const previewModalOpen = document.querySelector(".preview-modal");
 
 const previewCloseBtn = document.querySelector(".preview-modal__close-btn");
 
-const previewTitle = document.querySelector(".preview__title");
+const previewTitle = document.querySelector(".preview-modal__title");
 
 const previewImage = document.querySelector(".preview-modal__image");
 
