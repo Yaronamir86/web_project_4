@@ -27,7 +27,7 @@
   border: none;
   padding: 0;
   margin: 0;
-  background-color:transparent; 
+  background-color: transparent;
 }
 
 .element__trash-btn:hover {
@@ -82,10 +82,10 @@
   border: none;
   padding: 0;
   margin: 0;
-  background-color: transparent; 
   background-repeat: no-repeat;
   justify-self: center;
   align-self: center;
+  background-color: transparent;
 }
 .element__like-btn:hover {
   opacity: 0.5;
@@ -98,9 +98,8 @@
   border: none;
   padding: 0;
   margin: 0;
-  background-color:transparent; 
+  background-color: transparent;
 }
-  
 
 @media screen and (max-width: 320px) {
   .element__list {
