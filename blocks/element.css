@@ -90,8 +90,8 @@
   cursor: url("../images/cursor.svg"), pointer;
 }
 
-.element__like-btn:active {
-  background-image: url("../web_project_4/images/Union.svg");
+.element__like-btn_active {
+  background-image: url("../images/Union.svg");
   border: none;
 }
 

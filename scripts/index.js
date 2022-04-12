@@ -2,7 +2,6 @@
 ////declatrations////
 ////////////////////
 
-
 ////profile popup/////////////////////////////////
 
 const popUpOpen = document.querySelector(".popup");
@@ -26,8 +25,6 @@ const popupCloseBtn = document.querySelector(".popup__close-btn");
 const list = document.querySelector(".element__list");
 
 const listItem = document.querySelector(".element__list-item");
-
-const likeBtn = document.querySelector(".element__like-btn");
 
 const initialCards = [
   {
@@ -62,7 +59,6 @@ const profileName = document.querySelector(".profile__name");
 
 const profileAboutMe = document.querySelector(".profile__about-me");
 
-
 ///////place-modal declares///////////////////////////////////
 
 const placeModalOpen = document.querySelector(".place-modal");
@@ -77,6 +73,12 @@ const placeImage = document.querySelector(".place-modal__image");
 
 const createBtn = document.querySelector(".place-modal__create-btn");
 
+const placeInputTitle = document.querySelector("place-modal__text_type_title");
+
+const placeInputlink = document.querySelector(
+  "place-modal__text_type_image-link"
+);
+
 ///////preview-modal declares//////////////////////////////////////
 
 const previewModalOpen = document.querySelector(".preview-modal");
@@ -85,20 +87,39 @@ const previewCloseBtn = document.querySelector(".preview-modal__close-btn");
 
 const previewImage = document.querySelector(".preview-modal__image");
 
-
-
 //////////wrappers////
 const placesList = document.querySelector(".element__list");
 ////////////////////
-
-
-
 
 ////////////////////////////
 //////////FUNCTIONS/////////
 ////////////////////////////
 
+/////////cards functions//////////
 
+function createCard(card) {
+  const cardTemplate = document.querySelector("#card-template").content;
+  const cardElement = cardTemplate
+    .querySelector(".element__list-item")
+    .cloneNode(true);
+  const cardImage = cardElement.querySelector(".element__photo");
+  const cardTitle = cardElement.querySelector(".element__title");
+  const deleteBtn = cardElement.querySelector(".element__trash-btn");
+  //likeBtn.addEventListener("click", () => toggleclass(likeBtn, "element__like-btn_active"));
+  deleteBtn.addEventListener("click", () => cardElement.remove());
+  cardImage.src = card.link;
+  cardImage.alt = `a beautiful place in ${card.name}`;
+  cardTitle.textContent = card.name;
+  cardImage.addEventListener("click", () => openPreviewModal(card));
+
+  return cardElement;
+}
+
+function renderCard(card, list) {
+  list.prepend(createCard(card));
+}
+
+initialCards.forEach((card) => renderCard(card, placesList));
 
 //////////popup-functions////////////////////////
 
@@ -130,59 +151,29 @@ function closePlaceModal() {
   placeModalOpen.classList.remove("place-modal_opened");
 }
 
-
 ///////////preview-modal-function///////////
 
 function openPreviewModal(card) {
   previewImage.src = card.link;
   previewModalOpen.classList.add("preview-modal_opened");
- 
-
-
 }
 
 function closePreviewModal() {
   previewModalOpen.classList.remove("preview-modal_opened");
 }
 
-
-
-/////////cards functions//////////
-
-function createCardElement(card) {
-  const cardTemplate = document.querySelector("#card-template").content.querySelector(".element__list-item");
-
-  const cardElement = cardTemplate.cloneNode(true);
-
-  const cardImage = cardElement.querySelector(".element__photo");
-
-  const cardTitle = cardElement.querySelector(".element__title");
-
-  cardImage.src = card.link;
-  cardTitle.textContent = card.name;
-
-  cardImage.addEventListener("click", openPreviewModal);
- 
-
-  return cardElement;
+function addCard(event) {
+  event.preventDefault();
+  renderCard({ name: placeInputTitle.value, link: placeInputlink.value }, list);
+  closePlaceModal(placeModalOpen);
+  placeForm.reset();
 }
-
-
-
-function renderCard(card, wrapper) {
-
-wrapper.append(createCardElement(card));
-}
-
-initialCards.forEach(card => renderCard(card, placesList));
 
 //////////eventlisteners/////////
 
 addBtn.addEventListener("click", openPlaceModal);
 
 placeCloseBtn.addEventListener("click", closePlaceModal);
-
-previewImage.addEventListener("click", openPreviewModal);
 
 previewCloseBtn.addEventListener("click", closePreviewModal);
 
@@ -192,5 +183,4 @@ popupCloseBtn.addEventListener("click", closePopup);
 
 editBtn.addEventListener("click", openPopup);
 
-
-
+placeForm.addEventListener("submit", addCard);
