@@ -19,9 +19,8 @@
   display: flex;
   margin: auto;
   position: relative;
-  width: 433px;
-  min-width: 433px;
-  height: 540px;
+  max-width: 433px;
+  max-height: 540px;
 }
 
 .preview-modal__close-btn {
