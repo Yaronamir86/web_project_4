@@ -1,4 +1,4 @@
-.popup {
+.profile-modal{
   display: none;
   position: fixed;
   z-index: 1;
@@ -11,17 +11,17 @@
   align-items: center;
 }
 
-.popup_opened {
+.profile-modal_opened {
   display: flex;
 }
 
-.popup__container {
+.profile-modal__container {
   display: flex;
   margin: auto;
   position: relative;
 }
 
-.popup__close-btn {
+.profile-modal__close-btn {
   background: none;
   border: none;
   align-self: center;
@@ -30,12 +30,12 @@
   top: -44px;
 }
 
-.popup__close-btn:hover{
+.profile-modal__close-btn:hover{
     opacity: 0.8;
     cursor: url("../images/cursor.svg"), pointer;  
 }
 
-.popup__form {
+.profile-modal__form {
   width: 430px;
   background: #ffffff;
   color: #000000;
@@ -47,7 +47,7 @@
   position: relative;
 }
 
-.popup__title {
+.profile-modal__title {
   padding-left: 36px;
   padding-right: 36px;
   margin: 0;
@@ -60,14 +60,14 @@
   text-align: left;
 }
 
-.popup__input {
+.profile-modal__input {
   display: flex;
   flex-direction: column;
   padding: 54px 36px 36px 36px;
   max-width: 100%;
 }
 
-.popup__text {
+.profile-modal__text {
   border: none;
   font-size: 14px;
   font-style: normal;
@@ -78,11 +78,11 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.popup__text_type_about-me {
+.profile-modal__text_type_about-me {
   margin-top: 29px;
 }
 
-.popup__save-btn {
+.profile-modal__save-btn {
   border-radius: 2px;
   background-color: #000000;
   color: #ffffff;
@@ -92,50 +92,50 @@
   border: none;
 }
 
-.popup__save-btn:hover {
+.profile-modal__save-btn:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
-.popoup__close-icon {
+.profile-modal__close-icon {
   width: 36px;
 }
 
 @media screen and (max-width: 600px) {
-  .popup__form {
+  .profile-modal__form {
     max-width: 290px;
   }
 
-  .popup__close-btn {
+  .profile-modal__close-btn {
     top: -35px;
     right: 0;
   }
 
-  .popoup__close-icon {
+  .profile-modal__close-icon {
     width: 19px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .popup__form {
+  .profile-modal__form {
     max-width: 282px;
     box-sizing: border-box;
   }
 
-  .popup__title {
+  .profile-modal__title {
     font-size: 18px;
     line-height: 22px;
     padding: 25px 22px 0 22px;
   }
 
-.popup__input{
+.profile-modal__input{
   padding: 77px 22px 25px 22px;
 }
-  .popup__close-btn {
+  .profile-modal__close-btn {
     top: -31px;
   }
 
-  .popup__close-icon {
+  .profile-modal__close-icon {
     width: 18px;
   }
 }

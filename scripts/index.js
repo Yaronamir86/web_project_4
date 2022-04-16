@@ -1,28 +1,29 @@
-/////////////////////
-////declatrations////
-////////////////////
+/////////////////////////////////////////////////////////////////////////
+///////////////////////DECLARATIONS////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 
-////profile popup/////////////////////////////////
+////profile-modal/////////////////////////////////
 
-const popUpOpen = document.querySelector(".popup");
+const ProfileModal = document.querySelector(".profile-modal");
 
-const popUpForm = document.querySelector(".popup__form");
+const profileForm = document.querySelector(".profile-modal__form");
 
-const editBtn = document.querySelector(".profile__edit-btn");
+const profileEditBtn = document.querySelector(".profile__edit-btn");
 
-const addBtn = document.querySelector(".profile__add-btn");
+const profileAddBtn = document.querySelector(".profile__add-btn");
 
-const inputName = document.querySelector(".popup__text_type_name");
+const profileInputName = document.querySelector(".profile-modal__text_type_name");
 
-const inputAboutMe = document.querySelector(".popup__text_type_about-me");
+const profileInputAboutMe = document.querySelector(".profile-modal__text_type_about-me");
 
-const saveBtn = document.querySelector(".popup__save-btn");
+const profileCloseBtn = document.querySelector(".profile-modal__close-btn");
 
-const popupCloseBtn = document.querySelector(".popup__close-btn");
+const profileName = document.querySelector(".profile__name");
+
+const profileAboutMe = document.querySelector(".profile__about-me");
 
 //////card declares/////////////////////////////////
 
-const list = document.querySelector(".element__list");
 
 const listItem = document.querySelector(".element__list-item");
 
@@ -53,15 +54,10 @@ const initialCards = [
   },
 ];
 
-////////profile declares////////////////////////////////////
-
-const profileName = document.querySelector(".profile__name");
-
-const profileAboutMe = document.querySelector(".profile__about-me");
 
 ///////place-modal declares///////////////////////////////////
 
-const placeModalOpen = document.querySelector(".place-modal");
+const placeModal = document.querySelector(".place-modal");
 
 const placeCloseBtn = document.querySelector(".place-modal__close-btn");
 
@@ -81,7 +77,7 @@ const placeInputlink = document.querySelector(
 
 ///////preview-modal declares//////////////////////////////////////
 
-const previewModalOpen = document.querySelector(".preview-modal");
+const previewModal = document.querySelector(".preview-modal");
 
 const previewCloseBtn = document.querySelector(".preview-modal__close-btn");
 
@@ -93,13 +89,13 @@ const previewImage = document.querySelector(".preview-modal__image");
 const placesList = document.querySelector(".element__list");
 ////////////////////
 
-////////////////////////////
-//////////FUNCTIONS/////////
-////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////FUNCTIONS///////////////////////////////
+/////////////////////////////////////////////////////////////////////////
 
 /////////cards-functions//////////
 
-function activeClass(component, cl) {
+function toggleClass(component, cl) {
   component.classList.toggle(cl);
 }
 
@@ -113,8 +109,8 @@ function createCard(card) {
   const deleteBtn = cardElement.querySelector(".element__trash-btn");
   const likeBtn = cardElement.querySelector(".element__like-btn");
   likeBtn.addEventListener("click", () =>
-    activeClass(likeBtn, "element__like-btn_active")
-  ); //likeBtn.addEventListener("click", () => toggleclass(likeBtn, "element__like-btn_active"));
+    toggleClass(likeBtn, "element__like-btn_active")
+  ); 
   deleteBtn.addEventListener("click", () => cardElement.remove());
   cardImage.src = card.link;
   cardImage.alt = `a beautiful place in ${card.name}`;
@@ -130,34 +126,34 @@ function renderCard(card, list) {
 
 initialCards.forEach((card) => renderCard(card, placesList));
 
-//////////profile-popup-functions////////////////////////
+//////////profile-modal-functions////////////////////////
 
-function openPopup() {
-  popUpOpen.classList.add("popup_opened");
-  inputName.value = profileName.textContent;
-  inputAboutMe.value = profileAboutMe.textContent;
+function openProfileModal() {
+  ProfileModal.classList.add("profile-modal_opened");
+  profileInputName.value = profileName.textContent;
+  profileInputAboutMe.value = profileAboutMe.textContent;
 }
 
-function closePopup() {
-  popUpOpen.classList.remove("popup_opened");
+function closeProfileModal() {
+  ProfileModal.classList.remove("profile-modal_opened");
 }
 
-function formsubmit(event) {
+function Profileformsubmit(event) {
   event.preventDefault();
-  profileName.textContent = inputName.value;
-  profileAboutMe.textContent = inputAboutMe.value;
+  profileName.textContent = profileInputName.value;
+  profileAboutMe.textContent = profileInputAboutMe.value;
 
-  closePopup();
+  closeProfileModal();
 }
 
 ////////////place-modal-functions//////////////////////
 
 function openPlaceModal() {
-  placeModalOpen.classList.add("place-modal_opened");
+  placeModal.classList.add("place-modal_opened");
 }
 
 function closePlaceModal() {
-  placeModalOpen.classList.remove("place-modal_opened");
+  placeModal.classList.remove("place-modal_opened");
 }
 
 ///////////preview-modal-function///////////
@@ -165,33 +161,33 @@ function closePlaceModal() {
 function openPreviewModal(card) {
   previewImage.src = card.link;
   previewTitle.textContent = card.name;
-  previewModalOpen.classList.add("preview-modal_opened");
+  previewModal.classList.add("preview-modal_opened");
 }
 
 function closePreviewModal() {
-  previewModalOpen.classList.remove("preview-modal_opened");
+  previewModal.classList.remove("preview-modal_opened");
 }
 
 /////////add-card-function////////////////////////////////
 function addCard(event) {
   event.preventDefault();
-  renderCard({ name: placeInputTitle.value, link: placeInputlink.value }, list);
-  closePlaceModal(placeModalOpen);
+  renderCard({ name: placeInputTitle.value, link: placeInputlink.value }, placesList);
+  closePlaceModal(placeModal);
   placeForm.reset();
 }
-
-//////////eventlisteners/////////
-
-addBtn.addEventListener("click", openPlaceModal);
+/////////////////////////////////////////////////////////////////////////
+////////////////////////EVENTLISTENERS///////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+profileAddBtn.addEventListener("click", openPlaceModal);
 
 placeCloseBtn.addEventListener("click", closePlaceModal);
 
 previewCloseBtn.addEventListener("click", closePreviewModal);
 
-popUpForm.addEventListener("submit", formsubmit);
+profileForm.addEventListener("submit", Profileformsubmit);
 
-popupCloseBtn.addEventListener("click", closePopup);
+profileCloseBtn.addEventListener("click", closeProfileModal);
 
-editBtn.addEventListener("click", openPopup);
+profileEditBtn.addEventListener("click", openProfileModal);
 
 placeForm.addEventListener("submit", addCard);
