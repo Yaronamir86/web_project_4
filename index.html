@@ -53,88 +53,102 @@
       <footer class="footer">
         <p class="footer__copyrights">© 2022 Around The U.S.</p>
       </footer>
-      <!-- -------------profile-modal------------------------->
-      <div class="profile-modal">
-        <div class="profile-modal__container">
-          <button class="profile-modal__close-btn" type="button" aria-label="close">
+      <!--------profile-modal---------->
+      <div class="modal modal_type_edit-profile">
+        <div class="modal__container">
+          <button
+            class="modal__close-btn modal__close-btn_type_profile"
+            type="button"
+            aria-label="close"
+          >
             <img
-              class="profile-modal__close-icon"
+              class="modal__close-icon modal__close-icon_type_profile"
               src="./images/Close-Icon.svg"
               alt="closing tag"
             />
           </button>
-          <form class="profile-modal__form" name="profile-modal__form">
-            <h2 class="profile-modal__title">Edit profile</h2>
-            <div class="profile-modal__input">
+          <form
+            action="submit"
+            class="form__modal form__modal_type_profile"
+            name="profile-modal__form"
+          >
+            <h2 class="form__title form__title_type_profile">Edit profile</h2>
+            <div class="form__input form__input_type_profile">
               <input
                 type="text"
                 name="name"
                 placeholder="name"
-                class="profile-modal__text profile-modal__text_type_name"
+                class="form__text form__text_type_name"
               />
               <input
                 type="text"
                 name="about-me"
                 placeholder="about me"
-                class="profile-modal__text profile-modal__text_type_about-me"
+                class="form__text form__text_type_about-me"
               />
-              <button class="profile-modal__save-btn" type="submit">save</button>
-            </div>
-          </form>
-        </div>
-      </div>
-      <!----------------------place-modal-------------------------->
-      <div class="place-modal">
-        <div class="place-modal__container">
-          <button
-            class="place-modal__close-btn"
-            type="button"
-            aria-label="close"
-          >
-            <img
-              class="place-modal__close-icon"
-              src="./images/Close-Icon.svg"
-              alt="closing tag"
-            />
-          </button>
-          <form class="place-modal__form" name="place-modal__form">
-            <h2 class="place-modal__title">New place</h2>
-            <div class="place-modal__input">
-              <input
-                type="text"
-                name="Title"
-                placeholder="Title"
-                class="place-modal__text place-modal__text_type_title"
-              />
-              <input
-                type="url"
-                name="Image link"
-                placeholder="Image link"
-                class="place-modal__text place-modal__text_type_image-link"
-              />
-              <button class="place-modal__create-btn" type="submit">
-                Create
+              <button
+                class="modal__save-btn modal__save-btn_type_profile"
+                type="submit"
+              >
+                save
               </button>
             </div>
           </form>
         </div>
       </div>
-      <!----------------------preview-popup-------------------------->
-      <div class="preview-modal">
-        <div class="preview-modal__container">
+      <!---------place-modal------------->
+      <div class="modal modal_type_place">
+        <div class="modal__container">
           <button
-            class="preview-modal__close-btn"
+            class="modal__close-btn modal__close-btn_type_place"
             type="button"
             aria-label="close"
           >
             <img
-              class="preview-modal__close-icon"
+              class="modal__close-icon modal__close-icon_type_place"
               src="./images/Close-Icon.svg"
               alt="closing tag"
             />
           </button>
-          <img class="preview-modal__image" src="#" alt="#" />
-          <p class="preview-modal__title"></p>
+          <form
+            class="form__modal form__modal_type_place"
+            name="place-modal__form"
+          >
+            <h2 class="form__title form__title_type_place">New place</h2>
+            <div class="form__input form__input_type_place">
+              <input
+                type="text"
+                name="Title"
+                placeholder="Title"
+                class="form__text form__text_type_title"
+              />
+              <input
+                type="url"
+                name="Image link"
+                placeholder="Image link"
+                class="form__text form__text_type_image-link"
+              />
+              <button class="modal__create-btn" type="submit">Create</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!----------preview-modal------------>
+      <div class="modal modal_type_preview">
+        <div class="modal__container modal__container_type_preview">
+          <button
+            class="modal__close-btn modal__close-btn_type_preview"
+            type="button"
+            aria-label="close"
+          >
+            <img
+              class="modal__close-icon modal__close-icon_type_preview"
+              src="./images/Close-Icon.svg"
+              alt="closing tag"
+            />
+          </button>
+          <img class="modal__image_type_preview" src="#" alt="#" />
+          <p class="modal__title_type_preview"></p>
         </div>
       </div>
     </div>

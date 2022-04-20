@@ -2,28 +2,7 @@
 ///////////////////////DECLARATIONS////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-////profile-modal/////////////////////////////////
-
-const ProfileModal = document.querySelector(".profile-modal");
-
-const profileForm = document.querySelector(".profile-modal__form");
-
-const profileEditBtn = document.querySelector(".profile__edit-btn");
-
-const profileAddBtn = document.querySelector(".profile__add-btn");
-
-const profileInputName = document.querySelector(".profile-modal__text_type_name");
-
-const profileInputAboutMe = document.querySelector(".profile-modal__text_type_about-me");
-
-const profileCloseBtn = document.querySelector(".profile-modal__close-btn");
-
-const profileName = document.querySelector(".profile__name");
-
-const profileAboutMe = document.querySelector(".profile__about-me");
-
 //////card declares/////////////////////////////////
-
 
 const listItem = document.querySelector(".element__list-item");
 
@@ -53,37 +32,41 @@ const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
+////profile-modal/////////////////////////////////
 
-
-///////place-modal declares///////////////////////////////////
-
-const placeModal = document.querySelector(".place-modal");
-
-const placeCloseBtn = document.querySelector(".place-modal__close-btn");
-
-const placeForm = document.querySelector(".place-modal__form");
-
-const placeTitle = document.querySelector(".place-modal__title");
-
-const placeImage = document.querySelector(".place-modal__image");
-
-const createBtn = document.querySelector(".place-modal__create-btn");
-
-const placeInputTitle = document.querySelector(".place-modal__text_type_title");
-
-const placeInputlink = document.querySelector(
-  ".place-modal__text_type_image-link"
+const ProfileModal = document.querySelector(".modal_type_edit-profile");
+const profileForm = document.querySelector(".form__modal_type_profile");
+const profileEditBtn = document.querySelector(".profile__edit-btn");
+const profileAddBtn = document.querySelector(".profile__add-btn");
+const profileInputName = document.querySelector(".form__text_type_name");
+const profileInputAboutMe = document.querySelector(".form__text_type_about-me");
+const profileCloseBtn = document.querySelector(
+  ".modal__close-btn_type_profile"
 );
+const profileName = document.querySelector(".profile__name");
+const profileAboutMe = document.querySelector(".profile__about-me");
+const inputName = document.querySelector(".form__text_type_name");
+const inputTitle = document.querySelector(".form__text_type_about-me");
+
+///////add-place-modal declares///////////////////////////////////
+
+const placeModal = document.querySelector(".modal_type_place ");
+const placeCloseBtn = document.querySelector(".modal__close-btn_type_place");
+const placeForm = document.querySelector(".form__modal_type_place");
+const placeTitle = document.querySelector(".modal__title_type_place");
+const placeImage = document.querySelector(".modal__image_type_place");
+const createBtn = document.querySelector(".modal__create-btn");
+const placeInputTitle = document.querySelector(".form__text_type_title");
+const placeInputlink = document.querySelector(".form__text_type_image-link");
 
 ///////preview-modal declares//////////////////////////////////////
 
-const previewModal = document.querySelector(".preview-modal");
-
-const previewCloseBtn = document.querySelector(".preview-modal__close-btn");
-
-const previewTitle = document.querySelector(".preview-modal__title");
-
-const previewImage = document.querySelector(".preview-modal__image");
+const previewModal = document.querySelector(".modal_type_preview");
+const previewCloseBtn = document.querySelector(
+  ".modal__close-btn_type_preview"
+);
+const previewTitle = document.querySelector(".modal__title_type_preview");
+const previewImage = document.querySelector(".modal__image_type_preview");
 
 //////////wrappers////
 const placesList = document.querySelector(".element__list");
@@ -93,7 +76,7 @@ const placesList = document.querySelector(".element__list");
 /////////////////////////////////FUNCTIONS///////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 
-/////////cards-functions//////////
+/////////create-cards-functions and handlers//////////
 
 function toggleClass(component, cl) {
   component.classList.toggle(cl);
@@ -110,7 +93,7 @@ function createCard(card) {
   const likeBtn = cardElement.querySelector(".element__like-btn");
   likeBtn.addEventListener("click", () =>
     toggleClass(likeBtn, "element__like-btn_active")
-  ); 
+  );
   deleteBtn.addEventListener("click", () => cardElement.remove());
   cardImage.src = card.link;
   cardImage.alt = `a beautiful place in ${card.name}`;
@@ -128,32 +111,24 @@ initialCards.forEach((card) => renderCard(card, placesList));
 
 //////////profile-modal-functions////////////////////////
 
-function openProfileModal() {
-  ProfileModal.classList.add("profile-modal_opened");
-  profileInputName.value = profileName.textContent;
-  profileInputAboutMe.value = profileAboutMe.textContent;
+function openModal(Modal) {
+  Modal.classList.add("modal_opened");
 }
 
-function closeProfileModal() {
-  ProfileModal.classList.remove("profile-modal_opened");
+function closeModal(Modal) {
+  Modal.classList.remove("modal_opened");
 }
 
-function Profileformsubmit(event) {
+function ProfileFormSubmit(event) {
   event.preventDefault();
-  profileName.textContent = profileInputName.value;
-  profileAboutMe.textContent = profileInputAboutMe.value;
-
-  closeProfileModal();
+  profileName.textContent = inputName.value;
+  profileAboutMe.textContent = inputTitle.value;
+  closeModal(ProfileModal);
 }
 
-////////////place-modal-functions//////////////////////
-
-function openPlaceModal() {
-  placeModal.classList.add("place-modal_opened");
-}
-
-function closePlaceModal() {
-  placeModal.classList.remove("place-modal_opened");
+function autoFillFormProfile() {
+  inputName.value = profileName.textContent;
+  inputTitle.value = profileAboutMe.textContent;
 }
 
 ///////////preview-modal-function///////////
@@ -161,33 +136,48 @@ function closePlaceModal() {
 function openPreviewModal(card) {
   previewImage.src = card.link;
   previewTitle.textContent = card.name;
-  previewModal.classList.add("preview-modal_opened");
+  openModal(previewModal);
+  previewModal.classList.add("modal_opened");
 }
 
 function closePreviewModal() {
-  previewModal.classList.remove("preview-modal_opened");
+  previewModal.classList.remove("modal_opened");
 }
 
 /////////add-card-function////////////////////////////////
 function addCard(event) {
   event.preventDefault();
-  renderCard({ name: placeInputTitle.value, link: placeInputlink.value }, placesList);
-  closePlaceModal(placeModal);
+  renderCard(
+    { name: placeInputTitle.value, link: placeInputlink.value },
+    placesList
+  );
+  closeModal(placeModal);
   placeForm.reset();
 }
 /////////////////////////////////////////////////////////////////////////
 ////////////////////////EVENTLISTENERS///////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
-profileAddBtn.addEventListener("click", openPlaceModal);
+profileAddBtn.addEventListener("click", () => {
+  openModal(placeModal);
+});
 
-placeCloseBtn.addEventListener("click", closePlaceModal);
+placeCloseBtn.addEventListener("click", () => {
+  closeModal(placeModal);
+});
 
-previewCloseBtn.addEventListener("click", closePreviewModal);
+previewCloseBtn.addEventListener("click", () => {
+  closeModal(previewModal);
+});
 
-profileForm.addEventListener("submit", Profileformsubmit);
+profileEditBtn.addEventListener("click", () => {
+  autoFillFormProfile();
+  openModal(ProfileModal);
+});
 
-profileCloseBtn.addEventListener("click", closeProfileModal);
+profileForm.addEventListener("submit", ProfileFormSubmit);
 
-profileEditBtn.addEventListener("click", openProfileModal);
+profileCloseBtn.addEventListener("click", () => {
+  closeModal(ProfileModal);
+});
 
 placeForm.addEventListener("submit", addCard);

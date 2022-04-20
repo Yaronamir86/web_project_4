@@ -14,8 +14,6 @@
 
 @import "../blocks/footer.css";
 
-@import "../blocks/profile-modal.css";
+@import "../blocks/modal.css";
 
-@import "../blocks/place-modal.css";
-
-@import "../blocks/preview-modal.css";
+@import "../blocks/form.css";
