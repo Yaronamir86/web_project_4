@@ -1,14 +1,4 @@
-.form__modal {
-  width: 430px;
-  background: #ffffff;
-  color: #000000;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 10px;
-  align-self: center;
-  position: relative;
-}
+
 
 .form__title {
   padding-left: 36px;
@@ -42,17 +32,8 @@
   margin-top: 29px;
 }
 
-@media screen and (max-width: 600px) {
-  .form__modal {
-    max-width: 290px;
-  }
-}
-
 @media screen and (max-width: 320px) {
-  .form__modal {
-    max-width: 282px;
-    box-sizing: border-box;
-  }
+  
 
   .form__title {
     font-size: 18px;
