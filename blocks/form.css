@@ -54,7 +54,7 @@
   color: #ff0000;
 }
 
-.form__save-btn {
+.form__button {
   border-radius: 2px;
   background-color: #000000;
   color: #ffffff;
@@ -64,8 +64,12 @@
   border: none;
 }
 
-.form__save-btn_disabled,
-.form__save-btn_disabled:hover {
+.form__button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.form__button_disabled, 
+.form__button_disabled:hover {
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.2);
   color: rgba(0, 0, 0, 0.2);
