@@ -38,15 +38,15 @@ const profileModal = document.querySelector(".modal_type_edit-profile");
 const profileForm = document.querySelector(".form_type_profile");
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const profileAddBtn = document.querySelector(".profile__add-btn");
-const profileInputName = document.querySelector(".form__text_type_name");
-const profileInputAboutMe = document.querySelector(".form__text_type_about-me");
+const profileInputName = document.querySelector(".form__input_type_name");
+const profileInputAboutMe = document.querySelector(".form__input_type_about-me");
 const profileCloseBtn = document.querySelector(
   ".modal__close-btn_type_profile"
 );
 const profileName = document.querySelector(".profile__name");
 const profileAboutMe = document.querySelector(".profile__about-me");
-const inputName = document.querySelector(".form__text_type_name");
-const inputTitle = document.querySelector(".form__text_type_about-me");
+const inputName = document.querySelector(".form__input_type_name");
+const inputTitle = document.querySelector(".form__input_type_about-me");
 
 ///////add-place-modal declares///////////////////////////////////
 
@@ -55,9 +55,9 @@ const placeCloseBtn = document.querySelector(".modal__close-btn_type_place");
 const placeForm = document.querySelector(".form_type_place");
 const placeTitle = document.querySelector(".modal__title_type_place");
 const placeImage = document.querySelector(".modal__image_type_place");
-const createBtn = document.querySelector(".modal__create-btn");
-const placeInputTitle = document.querySelector(".form__text_type_title");
-const placeInputlink = document.querySelector(".form__text_type_image-link");
+const buttonElement= document.querySelector(".form__save-btn");
+const placeInputTitle = document.querySelector(".form__input_type_title");
+const placeInputlink = document.querySelector(".form__input_type_image-link");
 
 ///////preview-modal declares//////////////////////////////////////
 
@@ -113,6 +113,9 @@ initialCards.forEach((card) => renderCard(card, placesList));
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  //adding eventListeners after opening modal to configure closing with mouse/clicking outside the container
+  document.addEventListener("keydown", modalCloseOnEscape);
+  document.addEventListener("mousedown", modalCloseAnyClick);
 }
 
 function closeModal(modal) {
@@ -152,6 +155,20 @@ function addCard(event) {
   );
   closeModal(placeModal);
   placeForm.reset();
+}
+
+function modalCloseOnEscape(el) {
+  const currentModal = document.querySelector(".modal_opened");
+  if (el.key === "Escape") {
+    closeModal(currentModal);
+  }
+}
+
+function modalCloseAnyClick(el) {
+  const currentModal = document.querySelector(".modal_opened");
+  if (el.target.classList.contains("modal")) {
+    closeModal(currentModal);
+  }
 }
 /////////////////////////////////////////////////////////////////////////
 ////////////////////////EVENTLISTENERS///////////////////////////////////

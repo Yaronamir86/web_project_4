@@ -71,28 +71,38 @@
             action="submit"
             class="form form_type_profile"
             name="form_type_profile"
+            novalidate
+            autocomplete="off"
           >
             <h2 class="form__title form__title_type_profile">Edit profile</h2>
-            <div class="form__input form__input_type_profile">
+            <fieldset class="form__fieldset form__fieldset_type_profile">
               <input
                 type="text"
                 name="name"
                 placeholder="name"
-                class="form__text form__text_type_name"
+                class="form__input form__input_type_name"
+                minlength="2"
+                maxlength="40"
+                required
               />
+              <span class="form__input-error name-input-error"></span>
               <input
                 type="text"
                 name="about-me"
                 placeholder="about me"
-                class="form__text form__text_type_about-me"
+                class="form__input form__input_type_about-me"
+                minlength="2"
+                maxlength="200"
+                required
               />
+              <span class="form__input-error about-me-input-error"></span>
               <button
-                class="modal__save-btn modal__save-btn_type_profile"
+                class="form__save-btn form__save-btn_type_profile"
                 type="submit"
               >
                 save
               </button>
-            </div>
+            </fieldset>
           </form>
         </div>
       </div>
@@ -113,23 +123,31 @@
           <form
             class="form form_type_place"
             name="form_type_place"
+            novalidate
+            autocomplete="off"
           >
             <h2 class="form__title form__title_type_place">New place</h2>
-            <div class="form__input form__input_type_place">
+            <fieldset class="form__fieldset form__fieldset_type_place">
               <input
                 type="text"
                 name="Title"
                 placeholder="Title"
-                class="form__text form__text_type_title"
+                class="form__input form__input_type_title"
+                minlength="1"
+                maxlength="30"
+                required
               />
+              <span class="form__input-error title-input-error"></span>
               <input
                 type="url"
                 name="Image link"
                 placeholder="Image link"
-                class="form__text form__text_type_image-link"
+                class="form__input form__input_type_image-link"
+                required
               />
-              <button class="modal__create-btn" type="submit">Create</button>
-            </div>
+              <span class="form__input-error url-input-error"></span>
+              <button class="form__save-btn" type="submit">save</button>
+            </fieldset>
           </form>
         </div>
       </div>
@@ -178,6 +196,7 @@
         </div>
       </li>
     </template>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
