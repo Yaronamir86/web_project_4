@@ -22,7 +22,7 @@ const showInputError = (formElement, inputElement, configurations) => {
   };
   
   const hasInvalidInputs = (inputList) => {
-     inputList.some((inputElement) => {
+     return inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   };
