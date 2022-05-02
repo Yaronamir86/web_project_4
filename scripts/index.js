@@ -104,12 +104,12 @@ function renderCard(card, list) {
 initialCards.forEach((card) => renderCard(card, placesList));
 
 //////////profile-modal-functions////////////////////////
-function isNotPreviewModal(modal) {
+function checkModalType(modal) {
   return !modal.classList.contains("modal_type_preview") ? true : false;
 }
 
-function checkEditAndAddModals(modal) {
-  if (isNotPreviewModal(modal)) {
+function checkModalButtons(modal) {
+  if (checkModalType(modal)) {
     const inputList = [...modal.querySelectorAll(configurations.inputSelector)];
     const button = modal.querySelector(configurations.submitButtonSelector);
     toggleButton(inputList, button, configurations);
@@ -121,7 +121,7 @@ function openModal(modal) {
   //adding eventListeners after opening modal to configure closing with mouse/clicking outside the container
   document.addEventListener("keydown", closeModalOnEscape);
   document.addEventListener("mousedown", closeModalRemoteClick);
-  checkEditAndAddModals(modal);
+  checkModalButtons(modal);
 }
 
 function closeModal(modal) {
