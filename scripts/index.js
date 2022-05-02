@@ -1,4 +1,4 @@
-import { toggleButton, configurations } from "./validate.js";
+import { toggleButton, configurations, hideErrorsOnModalClose } from "./validate.js";
 /////////////////////////////////////////////////////////////////////////
 ///////////////////////DECLARATIONS////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -128,6 +128,9 @@ function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalOnEscape);
   document.removeEventListener("mousedown", closeModalRemoteClick);
+  if (checkModalType(modal)) {
+    hideErrorsOnModalClose(modal);
+  }
 }
 
 function profileFormSubmit(event) {

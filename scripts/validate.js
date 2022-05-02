@@ -71,6 +71,16 @@ const enableValidation = (configurations) => {
   });
 };
 
+export const hideErrorsOnModalClose = (modal) => {
+  const formElement = modal.querySelector(configurations.formSelector);
+  const inputList = [
+    ...formElement.querySelectorAll(configurations.inputSelector),
+  ];
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, configurations);
+  });
+};
+
 export const configurations = {
   formSelector: ".form",
   inputSelector: ".form__input",
