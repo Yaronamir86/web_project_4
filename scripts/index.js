@@ -1,4 +1,9 @@
-import { toggleButton, configurations, hideErrorsOnModalClose } from "./validate.js";
+import {
+  enableButton,
+  toggleButton,
+  configurations,
+  hideErrorsOnModalClose,
+} from "./validate.js";
 /////////////////////////////////////////////////////////////////////////
 ///////////////////////DECLARATIONS////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -47,7 +52,7 @@ const inputTitle = document.querySelector(".form__input_type_about-me");
 
 ///////add-place-modal declares///////////////////////////////////
 
-const placeModal = document.querySelector(".modal_type_place ");
+const placeModal = document.querySelector(".modal_type_place");
 const placeCloseBtn = document.querySelector(".modal__close-btn_type_place");
 const placeForm = document.querySelector(".form_type_place");
 const placeInputTitle = document.querySelector(".form__input_type_title");
@@ -104,16 +109,11 @@ function renderCard(card, list) {
 initialCards.forEach((card) => renderCard(card, placesList));
 
 //////////profile-modal-functions////////////////////////
-function checkModalType(modal) {
-  return !modal.classList.contains("modal_type_preview") ? true : false;
-}
 
-function checkModalButtons(modal) {
-  if (checkModalType(modal)) {
-    const inputList = [...modal.querySelectorAll(configurations.inputSelector)];
-    const button = modal.querySelector(configurations.submitButtonSelector);
-    toggleButton(inputList, button, configurations);
-  }
+function toggleModalButtons(modal) {
+  const inputList = [...modal.querySelectorAll(configurations.inputSelector)];
+  const button = modal.querySelector(configurations.submitButtonSelector);
+  toggleButton(inputList, button, configurations);
 }
 
 function openModal(modal) {
@@ -121,16 +121,12 @@ function openModal(modal) {
   //adding eventListeners after opening modal to configure closing with mouse/clicking outside the container
   document.addEventListener("keydown", closeModalOnEscape);
   document.addEventListener("mousedown", closeModalRemoteClick);
-  checkModalButtons(modal);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalOnEscape);
   document.removeEventListener("mousedown", closeModalRemoteClick);
-  if (checkModalType(modal)) {
-    hideErrorsOnModalClose(modal);
-  }
 }
 
 function profileFormSubmit(event) {
@@ -184,6 +180,8 @@ function closeModalRemoteClick(evt) {
 /////////////////////////////////////////////////////////////////////////
 profileAddBtn.addEventListener("click", () => {
   openModal(placeModal);
+  toggleModalButtons(placeModal);
+  hideErrorsOnModalClose(placeModal);
 });
 
 placeCloseBtn.addEventListener("click", () => {
@@ -195,8 +193,9 @@ previewCloseBtn.addEventListener("click", () => {
 });
 
 profileEditBtn.addEventListener("click", () => {
-  autoFillFormProfile();
   openModal(profileModal);
+  autoFillFormProfile();
+  toggleModalButtons(profileModal);
 });
 
 profileForm.addEventListener("submit", profileFormSubmit);

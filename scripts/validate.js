@@ -26,7 +26,7 @@ const hasInvalidInputs = (inputList) => {
   });
 };
 
-const enableButton = (button, configurations) => {
+export const enableButton = (button, configurations) => {
   button.disabled = true;
   button.classList.add(configurations.inactiveButtonClass);
 };
