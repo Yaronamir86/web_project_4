@@ -31,7 +31,7 @@ const enableButton = (button, configurations) => {
   button.classList.add(configurations.inactiveButtonClass);
 };
 
- const disableButton = (button, configurations) => {
+const disableButton = (button, configurations) => {
   button.disabled = false;
   button.classList.remove(configurations.inactiveButtonClass);
 };

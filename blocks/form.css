@@ -69,7 +69,7 @@
   cursor: pointer;
 }
 
-.form__button_disabled, 
+.form__button_disabled,
 .form__button_disabled:hover {
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.2);

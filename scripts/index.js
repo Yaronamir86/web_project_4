@@ -142,7 +142,6 @@ function autoFillFormProfile() {
   inputTitle.value = profileAboutMe.textContent;
 }
 
-
 ///////////preview-modal-function///////////
 
 function openPreviewModal(card) {
@@ -151,7 +150,6 @@ function openPreviewModal(card) {
   previewTitle.textContent = card.name;
   openModal(previewModal);
 }
-
 
 /////////add-card-function////////////////////////////////
 function addCard(event) {
@@ -178,14 +176,11 @@ function closeModalRemoteClick(evt) {
   }
 }
 
-
 /////////////////////////////////////////////////////////////////////////
 ////////////////////////EVENTLISTENERS///////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 profileAddBtn.addEventListener("click", () => {
   openModal(placeModal);
-  
-
 });
 
 placeCloseBtn.addEventListener("click", () => {
