@@ -66,6 +66,7 @@
 
 .form__button:hover {
   background: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
 }
 
 .form__button_disabled, 

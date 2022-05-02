@@ -1,10 +1,9 @@
+import { toggleButton, configurations } from "./validate.js";
 /////////////////////////////////////////////////////////////////////////
 ///////////////////////DECLARATIONS////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
 //////card declares/////////////////////////////////
-
-const listItem = document.querySelector(".element__list-item");
 
 const initialCards = [
   {
@@ -38,8 +37,6 @@ const profileModal = document.querySelector(".modal_type_edit-profile");
 const profileForm = document.querySelector(".form_type_profile");
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const profileAddBtn = document.querySelector(".profile__add-btn");
-const profileInputName = document.querySelector(".form__input_type_name");
-const profileInputAboutMe = document.querySelector(".form__input_type_about-me");
 const profileCloseBtn = document.querySelector(
   ".modal__close-btn_type_profile"
 );
@@ -53,9 +50,6 @@ const inputTitle = document.querySelector(".form__input_type_about-me");
 const placeModal = document.querySelector(".modal_type_place ");
 const placeCloseBtn = document.querySelector(".modal__close-btn_type_place");
 const placeForm = document.querySelector(".form_type_place");
-const placeTitle = document.querySelector(".modal__title_type_place");
-const placeImage = document.querySelector(".modal__image_type_place");
-const buttonElement= document.querySelector(".form__save-btn");
 const placeInputTitle = document.querySelector(".form__input_type_title");
 const placeInputlink = document.querySelector(".form__input_type_image-link");
 
@@ -110,19 +104,33 @@ function renderCard(card, list) {
 initialCards.forEach((card) => renderCard(card, placesList));
 
 //////////profile-modal-functions////////////////////////
+function isNotPreviewModal(modal) {
+  return !modal.classList.contains("modal_type_preview") ? true : false;
+}
+
+function checkEditAndAddModals(modal) {
+  if (isNotPreviewModal(modal)) {
+    const inputList = [...modal.querySelectorAll(configurations.inputSelector)];
+    const button = modal.querySelector(configurations.submitButtonSelector);
+    toggleButton(inputList, button, configurations);
+  }
+}
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
   //adding eventListeners after opening modal to configure closing with mouse/clicking outside the container
-  document.addEventListener("keydown", modalCloseOnEscape);
-  document.addEventListener("mousedown", modalCloseAnyClick);
+  document.addEventListener("keydown", closeModalOnEscape);
+  document.addEventListener("mousedown", closeModalRemoteClick);
+  checkEditAndAddModals(modal);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeModalOnEscape);
+  document.removeEventListener("mousedown", closeModalRemoteClick);
 }
 
-function ProfileFormSubmit(event) {
+function profileFormSubmit(event) {
   event.preventDefault();
   profileName.textContent = inputName.value;
   profileAboutMe.textContent = inputTitle.value;
@@ -134,17 +142,16 @@ function autoFillFormProfile() {
   inputTitle.value = profileAboutMe.textContent;
 }
 
+
 ///////////preview-modal-function///////////
 
 function openPreviewModal(card) {
   previewImage.src = card.link;
+  previewImage.alt = card.alt;
   previewTitle.textContent = card.name;
   openModal(previewModal);
 }
 
-function closePreviewModal() {
-  closeModal(previewModal);
-}
 
 /////////add-card-function////////////////////////////////
 function addCard(event) {
@@ -157,24 +164,28 @@ function addCard(event) {
   placeForm.reset();
 }
 
-function modalCloseOnEscape(el) {
+function closeModalOnEscape(evt) {
   const currentModal = document.querySelector(".modal_opened");
-  if (el.key === "Escape") {
+  if (evt.key === "Escape") {
     closeModal(currentModal);
   }
 }
 
-function modalCloseAnyClick(el) {
+function closeModalRemoteClick(evt) {
   const currentModal = document.querySelector(".modal_opened");
-  if (el.target.classList.contains("modal")) {
+  if (evt.target.classList.contains("modal")) {
     closeModal(currentModal);
   }
 }
+
+
 /////////////////////////////////////////////////////////////////////////
 ////////////////////////EVENTLISTENERS///////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 profileAddBtn.addEventListener("click", () => {
   openModal(placeModal);
+  
+
 });
 
 placeCloseBtn.addEventListener("click", () => {
@@ -190,7 +201,7 @@ profileEditBtn.addEventListener("click", () => {
   openModal(profileModal);
 });
 
-profileForm.addEventListener("submit", ProfileFormSubmit);
+profileForm.addEventListener("submit", profileFormSubmit);
 
 profileCloseBtn.addEventListener("click", () => {
   closeModal(profileModal);

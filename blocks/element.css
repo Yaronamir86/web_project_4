@@ -48,6 +48,10 @@
   max-height: 282px;
 }
 
+.element__photo:hover {
+  cursor: pointer;
+}
+
 .element__caption {
   background: #ffffff;
   color: #000000;
