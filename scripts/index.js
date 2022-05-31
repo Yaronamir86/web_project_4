@@ -83,6 +83,11 @@ const autoFillFormProfile = () => {
   inputTitle.value = profileAboutMe.textContent;
 };
 
+const resetPlaceForm = () => {
+  placeForm.reset();
+  addCardFormValidator.disableButton();
+}
+
 
 
 /////////////////////////////////////////////////////////
@@ -90,8 +95,9 @@ const autoFillFormProfile = () => {
 /////////////////////////////////////////////////////////
 
 addProfileButton.addEventListener("click", () => {
+  resetPlaceForm();
   openModal(placeModal);
-});
+  });
 
 placeCloseBtn.addEventListener("click", () => closeModal(placeModal));
 

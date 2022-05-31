@@ -41,14 +41,14 @@ export class formValidator {
     this._button.classList.remove(this._inactiveButtonClass);
   };
 
-  _disableButton = () => {
+  disableButton = () => {
     this._button.disabled = true;
     this._button.classList.add(this._inactiveButtonClass);
   };
 
   _toggleButton = () => {
     if (this._hasInvalidInputs()) {
-    this._disableButton();
+    this.disableButton();
   } else {
     this._enableButton();
   }
