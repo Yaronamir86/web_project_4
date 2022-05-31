@@ -1,4 +1,4 @@
-import { formValidator } from "./formValidator.js";
+import { FormValidator } from "./formValidator.js";
 import {
   openModal,
   profileForm,
@@ -58,14 +58,13 @@ const initialCards = [
 
 //////validation ///////////////
 
-const editFormValidator = new formValidator(settings, profileForm);
-export const addCardFormValidator = new formValidator(settings, placeForm);
+const editFormValidator = new FormValidator(settings, profileForm);
+export const addCardFormValidator = new FormValidator(settings, placeForm);
 
 editFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
 
 editFormValidator.resetValidation();
-addCardFormValidator.resetValidation();
 
 ////profile-modal/////////////////////////////////
 
@@ -85,7 +84,7 @@ const autoFillFormProfile = () => {
 
 const resetPlaceForm = () => {
   placeForm.reset();
-  addCardFormValidator.disableButton();
+  addCardFormValidator._disableButton();
 };
 
 /////////////////////////////////////////////////////////
@@ -104,7 +103,6 @@ previewCloseBtn.addEventListener("click", () => closeModal(previewModal));
 editProfilebutton.addEventListener("click", () => {
   editFormValidator.resetValidation();
   autoFillFormProfile();
-  editFormValidator.enableValidation();
   openModal(profileModal);
 });
 profileForm.addEventListener("submit", profileFormSubmit);

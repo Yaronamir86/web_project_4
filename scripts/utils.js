@@ -1,4 +1,4 @@
-import { card } from "./card.js";
+import { Card } from "./card.js";
 import { addCardFormValidator } from "./index.js";
 
 export const profileForm = document.querySelector(".form_type_profile");
@@ -68,7 +68,7 @@ export function closeModal(modal) {
 }
 
 export function renderCard(data, list) {
-  const createCard = new card(data, cardTemplateSelector).excuteCard();
+  const createCard = new Card(data, cardTemplateSelector).excuteCard();
   list.prepend(createCard);
 }
 
@@ -77,5 +77,4 @@ export function addCard(e) {
   renderCard({ name: placeTitle.value, link: placeLink.value }, placesList);
   closeModal(placeModal);
   placeForm.reset();
-  addCardFormValidator._disableButton();
 }

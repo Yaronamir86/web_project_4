@@ -5,14 +5,14 @@ import {
   previewImage,
 } from "./utils.js";
 
-export class card {
-  constructor(data, Selector) {
+export class Card {
+  constructor(data, selector) {
     this._name = data.name;
     this._link = data.link;
-    this._Selector = Selector;
+    this._selector = selector;
 
     this._cardTamplate = document
-      .querySelector(Selector)
+      .querySelector(selector)
       .content.querySelector(".element__list-item");
   }
 
