@@ -86,9 +86,7 @@ const autoFillFormProfile = () => {
 const resetPlaceForm = () => {
   placeForm.reset();
   addCardFormValidator.disableButton();
-}
-
-
+};
 
 /////////////////////////////////////////////////////////
 /////////////////////Event Listeners
@@ -97,7 +95,7 @@ const resetPlaceForm = () => {
 addProfileButton.addEventListener("click", () => {
   resetPlaceForm();
   openModal(placeModal);
-  });
+});
 
 placeCloseBtn.addEventListener("click", () => closeModal(placeModal));
 
