@@ -34,7 +34,7 @@ export class FormValidator {
   _hasInvalidInputs = () =>
     this._inputList.some((inputElement) => !inputElement.validity.valid);
 
-  _enableButton = () => {
+  enableButton = () => {
     this._button.disabled = false;
     this._button.classList.remove(this._inactiveButtonClass);
   };

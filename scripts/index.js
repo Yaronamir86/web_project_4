@@ -102,6 +102,7 @@ editProfilebutton.addEventListener("click", () => {
   autoFillFormProfile();
   openModal(profileModal);
   editFormValidator.resetValidation();
+  editFormValidator.enableButton();
 });
 
 profileForm.addEventListener("submit", profileFormSubmit);
