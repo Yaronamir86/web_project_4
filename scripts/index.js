@@ -62,6 +62,7 @@ const editFormValidator = new FormValidator(settings, profileForm);
 export const addCardFormValidator = new FormValidator(settings, placeForm);
 
 addCardFormValidator.enableValidation();
+editFormValidator.enableValidation();
 
 ////profile-modal/////////////////////////////////
 
@@ -98,10 +99,11 @@ placeCloseBtn.addEventListener("click", () => closeModal(placeModal));
 previewCloseBtn.addEventListener("click", () => closeModal(previewModal));
 
 editProfilebutton.addEventListener("click", () => {
-  editFormValidator.enableValidation();
   autoFillFormProfile();
   openModal(profileModal);
+  editFormValidator.resetValidation();
 });
+
 profileForm.addEventListener("submit", profileFormSubmit);
 profileCloseBtn.addEventListener("click", () => closeModal(profileModal));
 placeForm.addEventListener("submit", addCard);
