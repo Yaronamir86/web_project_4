@@ -7,7 +7,7 @@
     <meta name="description" content="webpage of photos from around the u.s" />
     <meta name="author" content="yaron amir" />
     <meta name="weywords" content="html, css, js" />
-    <link rel="stylesheet" href="./pages/index.css" />
+   <!-- <link rel="stylesheet" href="./pages/index.css" />-->
     <title>around the u.s</title>
   </head>
   <body class="body">
@@ -15,7 +15,7 @@
       <header class="header">
         <img
           class="header__logo"
-          src="./images/logo.svg"
+          src="<%= require('./images/logo.svg')%>"
           alt="around the u.s logo"
         />
       </header>
@@ -23,7 +23,7 @@
         <section class="profile">
           <img
             class="profile__image"
-            src="./images/image.png"
+            src="<%= require('./images/image.png')%>"
             alt="Jacques Cousteau photo"
           />
           <div class="profile__info">
@@ -31,17 +31,17 @@
             <button class="profile__edit-btn" type="button" aria-label="edit">
               <img
                 class="profile__edit-img"
-                src="./images/Edit-Button.svg"
+                src="<%= require('./images/Edit-Button.svg')%>"
                 alt="edit-btn image"
               />
             </button>
-            <p class="profile__about-me">Explorer</p>
+            <p class="profile__about">Explorer</p>
           </div>
 
           <button class="profile__add-btn" type="button" aria-label="add">
             <img
               class="profile__add-img"
-              src="./images/plus-sign.svg"
+              src="<%= require('./images/plus-sign.svg')%>"
               alt="add-btn image"
             />
           </button>
@@ -63,7 +63,7 @@
           >
             <img
               class="modal__close-icon modal__close-icon_type_profile"
-              src="./images/Close-Icon.svg"
+              src="<%= require('./images/Close-Icon.svg')%>"
               alt="closing tag"
             />
           </button>
@@ -120,7 +120,7 @@
           >
             <img
               class="modal__close-icon modal__close-icon_type_place"
-              src="./images/Close-Icon.svg"
+              src="<%= require('./images/Close-Icon.svg')%>"
               alt="closing tag"
             />
           </button>
@@ -169,7 +169,7 @@
           >
             <img
               class="modal__close-icon modal__close-icon_type_preview"
-              src="./images/Close-Icon.svg"
+              src="<%= require('./images/Close-Icon.svg')%>"
               alt="closing tag"
             />
           </button>
@@ -183,7 +183,7 @@
         <button class="element__trash-btn" type="button" aria-label="trash">
           <img
             class="element__trash-icon"
-            src="./images/Trash.svg"
+            src="<%= require('./images/Trash.svg')%>"
             alt="trash-icon"
           />
         </button>
@@ -197,13 +197,12 @@
           <button class="element__like-btn" type="button" aria-label="like">
             <img
               class="element__like-sign"
-              src="./images/like-sign.svg"
+              src="<%= require('./images/like-sign.svg')%>"
               alt="like sign"
             />
           </button>
         </div>
       </li>
     </template>
-    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>
