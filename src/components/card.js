@@ -21,7 +21,6 @@ export class Card {
 
   _deleteCard = () => this._element.remove();
 
-
   _setEventListeners() {
     this._element
       .querySelector(".element__like-btn")
@@ -31,7 +30,7 @@ export class Card {
       .addEventListener("click", this._deleteCard);
     this._element
       .querySelector(".element__photo")
-      .addEventListener("click",(data) => this._handleCardclick(data));
+      .addEventListener("click", (data) => this._handleCardclick(data));
   }
 
   generateCard() {
@@ -39,12 +38,11 @@ export class Card {
     this._image = this._element.querySelector(".element__photo");
     this._image.src = this._link;
     this._image.alt = `A beautiful scene in ${this._text}`;
-    
+
     this._deleteButton = this._element.querySelector(".element__trash-btn");
     this._likeButton = this._element.querySelector(".element__like-btn");
-    
+
     this._element.querySelector(".element__title").textContent = this._text;
-    
 
     this._setEventListeners();
 

@@ -6,7 +6,6 @@ import { UserInfo } from "../components/userInfo";
 import { Section } from "../components/section";
 import { Card } from "../components/card";
 
-
 import { FormValidator } from "../components/formValidator.js";
 import {
   profileForm,
@@ -17,7 +16,7 @@ import {
   placeForm,
   initialCards,
   cardTemplateSelector,
-  settings
+  settings,
 } from "../utils/utils.js";
 
 //////validation ///////////////
@@ -35,23 +34,19 @@ const userInfo = new UserInfo({
 
 //////modal instantiation//////////
 
-
 const profileModal = new PopupWithForm(".modal_type_edit-profile", (data) => {
-  userInfo.setUserInfo(data.name, data["about-me"])
+  userInfo.setUserInfo(data.name, data["about-me"]);
 });
 profileModal.setEventListeners();
 
 const placeModal = new PopupWithForm(".modal_type_place", (data) => {
-  renderCard({name:data["Title"], link:data["Image link"] });
+  renderCard({ name: data["Title"], link: data["Image link"] });
   addCardFormValidator.resetValidation();
 });
 placeModal.setEventListeners();
 
 const previewModal = new PopupWithImage(".modal_type_preview");
 previewModal.setEventListeners();
-
-
-
 
 //////////card create//////////////////////////
 
@@ -62,7 +57,6 @@ const previewSection = new Section(
   },
   ".element__list"
 );
-
 
 previewSection.render(initialCards);
 
@@ -79,7 +73,6 @@ function renderCard(data) {
   previewSection.addItem(element);
 }
 
-
 /////////////////////////////////////////////////////////
 /////////////////////Event Listeners
 /////////////////////////////////////////////////////////
@@ -91,11 +84,8 @@ editProfileButton.addEventListener("click", () => {
   editFormValidator.enableButton();
   editFormValidator.hideErrors();
   profileModal.open();
-  
 });
 
 addProfileButton.addEventListener("click", () => {
   placeModal.open();
 });
-
-

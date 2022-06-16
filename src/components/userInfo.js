@@ -14,5 +14,4 @@ export class UserInfo {
     this._profileName.textContent = name;
     this._profileJob.textContent = job;
   }
-
 }
