@@ -31,7 +31,7 @@ export class Card {
       .addEventListener("click", this._deleteCard);
     this._element
       .querySelector(".element__photo")
-      .addEventListener("click", this._handleCardclick(this._text, this._link));
+      .addEventListener("click",(data) => this._handleCardclick(data));
   }
 
   generateCard() {

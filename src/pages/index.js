@@ -37,13 +37,12 @@ const userInfo = new UserInfo({
 
 
 const profileModal = new PopupWithForm(".modal_type_edit-profile", (data) => {
- // userInfo.setUserInfo(data.name, data.job);
-  userInfo.setUserInfo(data.name, data.about);
+  userInfo.setUserInfo(data.name, data["about-me"])
 });
 profileModal.setEventListeners();
 
 const placeModal = new PopupWithForm(".modal_type_place", (data) => {
-  renderCard(data);
+  renderCard({name:data["Title"], link:data["Image link"] });
   addCardFormValidator.resetValidation();
 });
 placeModal.setEventListeners();
@@ -65,7 +64,7 @@ const previewSection = new Section(
 );
 
 
-previewSection.render();
+previewSection.render(initialCards);
 
 function generateCard(data) {
   const card = new Card(data, cardTemplateSelector, () => {
@@ -89,9 +88,10 @@ editProfileButton.addEventListener("click", () => {
   const info = userInfo.getUserInfo();
   inputName.value = info.name;
   inputTitle.value = info.job;
-  editFormValidator.resetValidation();
   editFormValidator.enableButton();
+  editFormValidator.hideErrors();
   profileModal.open();
+  
 });
 
 addProfileButton.addEventListener("click", () => {
