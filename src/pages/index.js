@@ -96,7 +96,6 @@ editProfileButton.addEventListener("click", () => {
 
 addProfileButton.addEventListener("click", () => {
   placeModal.open();
-  addCardFormValidator.resetValidation();
 });
 
 
