@@ -22,26 +22,20 @@ export class Card {
   _deleteCard = () => this._element.remove();
 
   _setEventListeners() {
-    this._element
-      .querySelector(".element__like-btn")
-      .addEventListener("click", this._handleLikeIcon);
-    this._element
-      .querySelector(".element__trash-btn")
-      .addEventListener("click", this._deleteCard);
-    this._element
-      .querySelector(".element__photo")
-      .addEventListener("click", (data) => this._handleCardclick(data));
+        this._likeButton.addEventListener("click", this._handleLikeIcon);
+        this._deleteButton.addEventListener("click", this._deleteCard);
+        this._image.addEventListener("click", (data) => this._handleCardclick(data));
   }
+
+  
 
   generateCard() {
     this._element = this._getTemplateClone();
     this._image = this._element.querySelector(".element__photo");
     this._image.src = this._link;
     this._image.alt = `A beautiful scene in ${this._text}`;
-
     this._deleteButton = this._element.querySelector(".element__trash-btn");
     this._likeButton = this._element.querySelector(".element__like-btn");
-
     this._element.querySelector(".element__title").textContent = this._text;
 
     this._setEventListeners();

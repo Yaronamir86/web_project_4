@@ -1,12 +1,12 @@
 import "./index.css";
 
-import { PopupWithImage } from "../components/popup-with-image";
-import { PopupWithForm } from "../components/popup-with-form";
-import { UserInfo } from "../components/userInfo";
-import { Section } from "../components/section";
-import { Card } from "../components/card";
+import { PopupWithImage } from "../components/PopupWithImage";
+import { PopupWithForm } from "../components/PopupWithForm";
+import { UserInfo } from "../components/UserInfo";
+import { Section } from "../components/Section";
+import { Card } from "../components/Card";
 
-import { FormValidator } from "../components/formValidator.js";
+import { FormValidator } from "../components/FormValidator.js";
 import {
   profileForm,
   editProfileButton,
@@ -17,7 +17,7 @@ import {
   initialCards,
   cardTemplateSelector,
   settings,
-} from "../utils/utils.js";
+} from "../utils/constants.js";
 
 //////validation ///////////////
 
@@ -41,7 +41,6 @@ profileModal.setEventListeners();
 
 const placeModal = new PopupWithForm(".modal_type_place", (data) => {
   renderCard({ name: data["Title"], link: data["Image link"] });
-  addCardFormValidator.resetValidation();
 });
 placeModal.setEventListeners();
 
@@ -88,4 +87,6 @@ editProfileButton.addEventListener("click", () => {
 
 addProfileButton.addEventListener("click", () => {
   placeModal.open();
+  addCardFormValidator.resetValidation();
+  addCardFormValidator.hideErrors();
 });
