@@ -9,6 +9,7 @@
   border-radius: 50%;
   width: 122px;
   position: relative;
+  z-index: 1;
 }
 
 .profile__avatar-container{
@@ -25,6 +26,7 @@
   display: block;
   content: "";
   transition: background-color 0.4s ease-in-out;
+  z-index: 5;
 }
 
 .profile__avatar-container:hover::before{
