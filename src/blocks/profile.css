@@ -124,6 +124,13 @@
     align-self: center;
   }
 
+  .profile__avatar-container{
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+  
+
   .profile__info {
     display: flex;
     flex-direction: column;
