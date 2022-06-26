@@ -5,13 +5,13 @@
   position: relative;
 }
 
-/*.profile__image {
-  
-}*/
-
-.profile__avatar-container{
+.profile__avatar {
   border-radius: 50%;
   width: 122px;
+  position: relative;
+}
+
+.profile__avatar-container{
   position: relative;
 }
 
