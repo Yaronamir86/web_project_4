@@ -30,7 +30,7 @@
   z-index: 5;
 }
 
-.profile__avatar-container:hover::before{
+.profile__avatar-container:hover::before {
   background-image: url("../images/edit-icon.svg");
   background-position: center;
   background-size: 20px;
