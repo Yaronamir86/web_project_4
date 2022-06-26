@@ -179,7 +179,26 @@
           <p class="modal__title modal__title_type_preview"></p>
         </div>
       </div>
+      <!--------------delete-modal---------------------->
+      <div class="modal modal_type_delete">
+        <div class="modal__container">
+          <button
+            class="modal__close-btn modal__close-btn_type_delete"
+            type="button"
+            aria-label="close"
+          >
+            <img
+              class="modal__close-icon modal__close-icon_type_delete"
+              src="<%= require('./images/Close-Icon.svg')%>"
+              alt="closing tag"
+            />
+          </button>
+           <p class="modal__question">are you sure?</p>
+          <button class="modal__button modal__button_type_delete" type="submit">yes</button>
+        </div>
+      </div>
     </div>
+    <!------------------------card-template------------------------------>
     <template id="card-template">
       <li class="element__list-item">
         <button class="element__trash-btn" type="button" aria-label="trash">
