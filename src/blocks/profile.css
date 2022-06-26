@@ -7,7 +7,8 @@
 
 .profile__avatar {
   border-radius: 50%;
-  width: 122px;
+  max-width: 122px;
+  max-height: 122px;
   position: relative;
   z-index: 1;
 }
@@ -30,7 +31,7 @@
 }
 
 .profile__avatar-container:hover::before{
-  background-image: url("../images/image.svg");
+  background-image: url("../images/edit-icon.svg");
   background-position: center;
   background-size: 20px;
   background-repeat: no-repeat;
