@@ -35,7 +35,7 @@ avatarFormValidator.enableValidation();
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   jobSelector: ".profile__about",
-  avatarElement: ".profile__image"
+  avatarSelector: ".profile__avatar"
 });
 
 //////modal instantiation//////////
@@ -51,7 +51,7 @@ const placeModal = new PopupWithForm(".modal_type_place", (data) => {
 placeModal.setEventListeners();
 
 const avatarModal = new PopupWithForm(".modal_type_avatar", (data) => {
-userInfo.setAvatarInfo(data)
+userInfo.setAvatarInfo(data["image-link"])
 });
 avatarModal.setEventListeners();
 
