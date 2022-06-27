@@ -42,8 +42,9 @@ export const addProfileButton = document.querySelector(".profile__add-btn");
 export const inputName = document.querySelector(".form__input_type_name");
 export const inputTitle = document.querySelector(".form__input_type_about-me");
 export const placeForm = document.querySelector(".form_type_place");
-
-
+export const avatarForm = document.querySelector(".form_type_avatar");
+export const avatar = document.querySelector(".profile__image-container");
+export const profileImage = document.querySelector(".profile__image")
 //export const profileCloseBtn = document.querySelector(
 //  ".modal__close-btn_type_profile"
 //);

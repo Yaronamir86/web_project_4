@@ -7,7 +7,7 @@
     <meta name="description" content="webpage of photos from around the u.s" />
     <meta name="author" content="yaron amir" />
     <meta name="weywords" content="html, css, js" />
-   <!-- <link rel="stylesheet" href="./pages/index.css" />-->
+    <!-- <link rel="stylesheet" href="./pages/index.css" />-->
     <title>around the u.s</title>
   </head>
   <body class="body">
@@ -22,12 +22,12 @@
       <main class="content">
         <section class="profile">
           <div class="profile__avatar-container">
-          <img
-            class="profile__avatar"
-            src="<%= require('./images/image.png')%>"
-            alt="Jacques Cousteau photo"
-          />
-        </div>
+            <img
+              class="profile__avatar"
+              src="<%= require('./images/image.png')%>"
+              alt="Jacques Cousteau photo"
+            />
+          </div>
           <div class="profile__info">
             <h1 class="profile__name">Jacques Cousteau</h1>
             <button class="profile__edit-btn" type="button" aria-label="edit">
@@ -193,10 +193,55 @@
               alt="closing tag"
             />
           </button>
-           <p class="modal__question">are you sure?</p>
-          <button class="modal__button modal__button_type_delete" type="submit">yes</button>
+          <div class="modal__content">
+            <p class="modal__question">Are you sure?</p>
+            <button
+              class="modal__button modal__button_type_delete"
+              type="submit"
+            >
+              Yes
+            </button>
+          </div>
         </div>
       </div>
+      <!------------------------avatar-modal----------------------->
+    <div class="modal modal_type_avatar">
+      <div class="modal__container">
+        <button
+          class="modal__close-btn modal__close-btn_type_avatar"
+          type="button"
+          aria-label="close"
+        >
+          <img
+            class="modal__close-icon modal__close-icon_type_avatar"
+            src="<%= require('./images/Close-Icon.svg')%>"
+            alt="closing tag"
+          />
+        </button>
+        <form
+          class="form form_type_avatar"
+          name="form_type_avatar"
+          novalidate
+          autocomplete="off"
+        >
+          <h2 class="form__title form__title_type_avatar">Change profile picture</h2>
+          <fieldset class="form__fieldset form__fieldset_type_avatar">
+            
+            <input
+              input
+              id="url-input"
+              type="url"
+              name="Image link"
+              placeholder="Image link"
+              class="form__input form__input_type_image-link"
+              required
+            />
+            <span class="form__input-error url-input-error"></span>
+            <button class="form__button" type="submit">save</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
     </div>
     <!------------------------card-template------------------------------>
     <template id="card-template">
@@ -215,13 +260,16 @@
         />
         <div class="element__caption">
           <h2 class="element__title"></h2>
-          <button class="element__like-btn" type="button" aria-label="like">
-            <img
-              class="element__like-sign"
-              src="<%= require('./images/like-sign.svg')%>"
-              alt="like sign"
-            />
-          </button>
+          <div class="element__like-container">
+            <button class="element__like-btn" type="button" aria-label="like">
+              <img
+                class="element__like-sign"
+                src="<%= require('./images/like-sign.svg')%>"
+                alt="like sign"
+              />
+            </button>
+            <span class="element__like-count"></span>
+          </div>
         </div>
       </li>
     </template>

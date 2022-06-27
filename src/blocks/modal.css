@@ -50,6 +50,49 @@
   max-width: 75vw;
 }
 
+.modal__content{
+  width: 430px;
+  background: #ffffff;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  align-self: center;
+  position: relative;
+}
+
+.modal__question{
+  padding-left: 36px;
+  padding-right: 36px;
+  margin: 0;
+  padding-top: 34px;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.modal__button{
+  border-radius: 2px;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 0;
+  width: 80%;
+  margin: auto;
+  margin-top: 48px;
+  margin-bottom: 36px;
+  line-height: 50px;
+  border: none;
+}
+
+.modal__button:hover{
+  background: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
 .modal__close-btn {
   background: none;
   border: none;

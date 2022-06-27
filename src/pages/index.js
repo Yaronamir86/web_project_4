@@ -8,6 +8,8 @@ import { Card } from "../components/Card";
 
 import { FormValidator } from "../components/FormValidator.js";
 import {
+  avatar,
+  profileImage,
   profileForm,
   editProfileButton,
   addProfileButton,
@@ -17,19 +19,23 @@ import {
   initialCards,
   cardTemplateSelector,
   settings,
+  avatarForm,
 } from "../utils/constants.js";
 
 //////validation ///////////////
 
 const editFormValidator = new FormValidator(settings, profileForm);
 export const addCardFormValidator = new FormValidator(settings, placeForm);
+const avatarFormValidator = new FormValidator(settings, avatarForm)
 
 addCardFormValidator.enableValidation();
 editFormValidator.enableValidation();
+avatarFormValidator.enableValidation();
 
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   jobSelector: ".profile__about",
+  avatarElement: ".profile__image"
 });
 
 //////modal instantiation//////////
@@ -43,6 +49,11 @@ const placeModal = new PopupWithForm(".modal_type_place", (data) => {
   renderCard({ name: data["Title"], link: data["Image link"] });
 });
 placeModal.setEventListeners();
+
+const avatarModal = new PopupWithForm(".modal_type_avatar", (data) => {
+userInfo.setAvatarInfo(data)
+});
+avatarModal.setEventListeners();
 
 const previewModal = new PopupWithImage(".modal_type_preview");
 previewModal.setEventListeners();
@@ -89,4 +100,8 @@ addProfileButton.addEventListener("click", () => {
   placeModal.open();
   addCardFormValidator.resetValidation();
   addCardFormValidator.hideErrors();
+});
+
+avatar.addEventListener("click", () => {
+  avatarModal.open();
 });
