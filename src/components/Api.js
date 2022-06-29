@@ -27,8 +27,14 @@
           method: 'POST',
           body: JSON.stringify(data)
         })
-        
-      }
+     }
+
+     deleteCards(cardId) {
+        return customFetch(`${this._baseUrl}/cards/${cardId}`, {
+          headers: this._headers,
+          method: 'DELETE',
+        })
+     }
   }
   
   export const api = new Api({

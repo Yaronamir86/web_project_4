@@ -1,9 +1,11 @@
 export class Card {
-  constructor(data, selector, handleCardclick) {
+  constructor(data, selector, handleCardclick, handleDeleteCard) {
     this._text = data.name;
     this._link = data.link;
     this._selector = selector;
     this._handleCardclick = handleCardclick;
+    this._handleDeleteCard = handleDeleteCard;
+    this._id = data.id;
   }
 
   _getTemplateClone = () => {
@@ -19,11 +21,11 @@ export class Card {
     evt.target.classList.toggle("element__like-btn_active");
   };
 
-  //_deleteCard = () => this._element.remove();
+  removeCard = () => this._element.remove();
 
   _setEventListeners() {
         this._likeButton.addEventListener("click", this._handleLikeIcon);
-        this._deleteButton.addEventListener("click", this._deleteCard);
+        this._deleteButton.addEventListener("click",() => this._handleDeleteCard(this._id));
         this._image.addEventListener("click", (data) => this._handleCardclick(data));
   }
 
