@@ -44,7 +44,8 @@ export const inputTitle = document.querySelector(".form__input_type_about-me");
 export const placeForm = document.querySelector(".form_type_place");
 export const avatarForm = document.querySelector(".form_type_avatar");
 export const avatar = document.querySelector(".profile__avatar-container");
-export const profileImage = document.querySelector(".profile__avatar")
+export const profileImage = document.querySelector(".profile__avatar");
+export const trashIcon = document.querySelectorAll(".element__trash-btn");
 //export const profileCloseBtn = document.querySelector(
 //  ".modal__close-btn_type_profile"
 //);

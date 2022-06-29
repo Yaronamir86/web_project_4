@@ -20,7 +20,10 @@ import {
   cardTemplateSelector,
   settings,
   avatarForm,
+  trashIcon
 } from "../utils/constants.js";
+import { PopupWithButton } from "../components/PopupWithButton";
+import { api } from "../components/Api";
 
 //////validation ///////////////
 
@@ -39,26 +42,55 @@ const userInfo = new UserInfo({
 });
 
 //////modal instantiation//////////
-
+/////////////////////////////////////////////////////////////////////////////////////////
 const profileModal = new PopupWithForm(".modal_type_edit-profile", (data) => {
   userInfo.setUserInfo(data.name, data["about-me"]);
 });
 profileModal.setEventListeners();
 
+
+//////////////////////////////////////////////////////////////////////////////////////////
 const placeModal = new PopupWithForm(".modal_type_place", (data) => {
+  
+  api.createCards({name: data["Title"], link: data["Image link"]})
+  .then(res => {
+    generateCard(res);
+  })
+
   renderCard({ name: data["Title"], link: data["Image link"] });
 });
 placeModal.setEventListeners();
 
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
 const avatarModal = new PopupWithForm(".modal_type_avatar", (data) => {
-userInfo.setAvatarInfo(data["image-link"])
+userInfo.setAvatarInfo(data["Image link"])
 });
 avatarModal.setEventListeners();
 
+
+///////////////////////////////////////////////////////////////////////////////////////////
 const previewModal = new PopupWithImage(".modal_type_preview");
 previewModal.setEventListeners();
 
+
+//////////////////////////////////////////////////////////////////////////////////////////
+const deleteModal = new PopupWithButton(".modal_type_delete")
+deleteModal.setEventListeners();
+
 //////////card create//////////////////////////
+api.getInitialCards()
+.then(
+  res => {
+    previewSection.render(res);
+  });
+
+api.getUserInfo()
+.then(
+  res => {
+    userInfo.setUserInfo(res.name, res.about)
+  }); 
 
 const previewSection = new Section(
   {
@@ -68,7 +100,7 @@ const previewSection = new Section(
   ".element__list"
 );
 
-previewSection.render(initialCards);
+//previewSection.render(initialCards);
 
 function generateCard(data) {
   const card = new Card(data, cardTemplateSelector, () => {
@@ -105,3 +137,4 @@ addProfileButton.addEventListener("click", () => {
 avatar.addEventListener("click", () => {
   avatarModal.open();
 });
+

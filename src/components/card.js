@@ -19,7 +19,7 @@ export class Card {
     evt.target.classList.toggle("element__like-btn_active");
   };
 
-  _deleteCard = () => this._element.remove();
+  //_deleteCard = () => this._element.remove();
 
   _setEventListeners() {
         this._likeButton.addEventListener("click", this._handleLikeIcon);
@@ -36,6 +36,7 @@ export class Card {
     this._image.alt = `A beautiful scene in ${this._text}`;
     this._deleteButton = this._element.querySelector(".element__trash-btn");
     this._likeButton = this._element.querySelector(".element__like-btn");
+    this._likeCount = this._element.querySelector(".element__like-count");
     this._element.querySelector(".element__title").textContent = this._text;
 
     this._setEventListeners();
