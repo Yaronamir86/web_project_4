@@ -25,7 +25,113 @@ import {
 import { PopupWithButton } from "../components/PopupWithButton";
 import { api } from "../components/Api";
 
-//////validation ///////////////
+
+///////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////modal instantiation///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+const profileModal = new PopupWithForm(".modal_type_edit-profile", (data) => {
+  userInfo.setUserInfo(data.name, data["about-me"]);
+});
+profileModal.setEventListeners();
+
+////////////////////////////place-modal//////////////////////////////////////////////////////////////
+const placeModal = new PopupWithForm(".modal_type_place", (data) => {
+  api
+    //.createCards({ name: data["Title"], link: data["Image link"] })
+    .createCards(data)
+    .then((res) => {
+      generateCard(res)
+        //renderCard({ name: data["Title"], link: data["Image link"] });
+       // renderCard(res)
+       placeModal.close();
+        
+    });
+});
+placeModal.setEventListeners();
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////avatar-modal////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+const avatarModal = new PopupWithForm(".modal_type_avatar", (data) => {
+  userInfo.setAvatarInfo(data["Image link"]);
+});
+avatarModal.setEventListeners();
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////preview-modal////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+const previewModal = new PopupWithImage(".modal_type_preview");
+previewModal.setEventListeners();
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////delete-modal/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+const deleteModal = new PopupWithButton(".modal_type_delete");
+deleteModal.setEventListeners();
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////card create + api conection/////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+let userId
+
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+.then(([cardData, userData]) => {
+  userId = userData._id
+  console.log('userId', userId)
+  previewSection.render(cardData);
+
+  userInfo.setUserInfo(userData.name, userData.about);
+})
+
+const previewSection = new Section(
+  {
+    renderer:  renderCard,
+  },
+  ".element__list"
+);
+
+function generateCard(data) {
+  const card = new Card(
+    data,
+    cardTemplateSelector,
+      () => {
+        previewModal.open(data.link, data.name);
+      },
+    (id) => {
+      deleteModal.open();
+      deleteModal.setAction(() => {
+        api.deleteCards(id)
+        .then(res => {
+          console.log('card is deleted', res)
+          card.removeCard()
+          deleteModal.close()
+        })
+      })
+    },
+    (id) => {
+      api.likeCard(id)
+        .then(res => {
+          card.likeCard()
+          console.log('res', res);
+        });
+    },
+    userId
+  );
+  const cardElement = card.generateCard(data);
+  return cardElement;
+}
+
+
+function renderCard(data) {
+  const element = generateCard(data);
+  previewSection.addItem(element);
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////validation //////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const editFormValidator = new FormValidator(settings, profileForm);
 export const addCardFormValidator = new FormValidator(settings, placeForm);
@@ -40,88 +146,9 @@ const userInfo = new UserInfo({
   jobSelector: ".profile__about",
   avatarSelector: ".profile__avatar",
 });
-///////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////modal instantiation///////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////
-const profileModal = new PopupWithForm(".modal_type_edit-profile", (data) => {
-  userInfo.setUserInfo(data.name, data["about-me"]);
-});
-profileModal.setEventListeners();
-
-////////////////////////////place-modal//////////////////////////////////////////////////////////////
-const placeModal = new PopupWithForm(".modal_type_place", (data) => {
-  api
-    .createCards({ name: data["Title"], link: data["Image link"] })
-    .then((res) => {
-      generateCard(res),
-        renderCard({ name: data["Title"], link: data["Image link"] });
-    });
-});
-placeModal.setEventListeners();
-
-////////////////////////////////avatar-modal////////////////////////////////////////////////////////////
-const avatarModal = new PopupWithForm(".modal_type_avatar", (data) => {
-  userInfo.setAvatarInfo(data["Image link"]);
-});
-avatarModal.setEventListeners();
-
-////////////////////////////////preview-modal////////////////////////////////////////////////////////
-const previewModal = new PopupWithImage(".modal_type_preview");
-previewModal.setEventListeners();
-
-/////////////////////////////////delete-modal/////////////////////////////////////////////////////////
-const deleteModal = new PopupWithButton(".modal_type_delete");
-deleteModal.setEventListeners();
-
-////////////////////////////////card create/////////////////////////////////////////////////
-api.getInitialCards().then((res) => {
-  previewSection.render(res);
-  console.log('res', res);
-});
-
-api.getUserInfo().then((res) => {
-  userInfo.setUserInfo(res.name, res.about);
-  console.log('res', res);
-});
-
-const previewSection = new Section(
-  {
-    renderer:  renderCard,
-  },
-  ".element__list"
-);
-
-function generateCard(data) {
-  const card = new Card(
-    data,
-    cardTemplateSelector,
-    () => {
-      previewModal.open(data.link, data.name);
-    },
-    (id) => {
-      deleteModal.open()
-      deleteModal.setAction(() => {
-        api.deleteCards(id)
-        .then(res => {
-          console.log('card is deleted', res)
-          card.removeCard()
-          deleteModal.close()
-        })
-      })
-    }
-  );
-  const cardElement = card.generateCard(data);
-  return cardElement;
-}
-
-function renderCard(data) {
-  const element = generateCard(data);
-  previewSection.addItem(element);
-}
-/////////////////////////////////////////////////////////
-/////////////////////Event Listeners
-/////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////Event Listeners////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 editProfileButton.addEventListener("click", () => {
   const info = userInfo.getUserInfo();

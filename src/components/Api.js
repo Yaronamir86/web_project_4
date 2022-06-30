@@ -32,7 +32,14 @@
      deleteCards(cardId) {
         return customFetch(`${this._baseUrl}/cards/${cardId}`, {
           headers: this._headers,
-          method: 'DELETE',
+          method: 'DELETE'
+        })
+     }
+
+     likeCard(cardId) {
+        return customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+          headers: this._headers,
+          method: 'PUT'
         })
      }
   }
