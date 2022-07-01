@@ -29,9 +29,7 @@ export class Card {
     return cardElement;
   };
 
-  isliked() {
-    return this._likes.some((person) => person.id === this.userId);
-  }
+  
 
   removeCard() {
     this._element.remove();
@@ -39,26 +37,9 @@ export class Card {
     this._element = null;
   }
 
-  likeCard(newLikes) {
-    this._likes = newLikes;
-    this._element.querySelector(".element__like-count").textContent =
-      this._likes.length;
+  
 
-    this._element
-      .querySelector(".element__like-btn")
-      .classList.add("element__like-btn_active");
-  }
-
-  dislikeCard(newLikes) {
-    this._likes = newLikes;
-    this._element.querySelector(".element__like-count").textContent =
-      this._likes.length;
-
-    this._element
-      .querySelector(".element__like-btn")
-      .classList.remove("element__like-btn_active");
-  }
-
+  
   _setEventListeners() {
     this._likeButton.addEventListener("click", () =>
       this._handleLikeIcon(this._id)
@@ -76,6 +57,30 @@ export class Card {
     this._element.querySelector(".element__like-count").textContent =
       likeAmount;
   }
+  isliked() {
+    return this._likes.some((person) => person.id === this.userId);
+  }
+
+  dislikeCard(newLikes) {
+    this._likes = newLikes;
+    this._element.querySelector(".element__like-count").textContent =
+      this._likes.length;
+
+    this._element
+      .querySelector(".element__like-btn")
+      .classList.remove("element__like-btn_active");
+  }
+
+  likeCard(newLikes) {
+    this._likes = newLikes;
+    this._element.querySelector(".element__like-count").textContent =
+      this._likes.length;
+
+    this._element
+      .querySelector(".element__like-btn")
+      .classList.add("element__like-btn_active");
+  }
+
 
   generateCard() {
     this._element = this._getTemplateClone();
