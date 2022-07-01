@@ -18,12 +18,25 @@ export class Api {
       });
     }
   
-    setUserInfo(data) {
+    editProfile(name, about) {
       return customFetch(`${this._baseUrl}/users/me`, {
           headers: this._headers,
           method: "PATCH",
-          body: JSON.stringify(data),
+          body: JSON.stringify({
+            name,
+            about
+          })
       });
+    }
+
+    editAvatar(url) {
+        return customFetch(`${this._baseUrl}/users/me/avatar`, {
+            headers: this._headers,
+            method: "PATCH",
+            body: JSON.stringify({
+              avatar: url,
+            })
+        });
     }
   
   
@@ -42,14 +55,14 @@ export class Api {
       });
     }
   
-    likeCard(cardId) {
+    addLike(cardId) {
       return customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
         headers: this._headers,
         method: "PUT",
       });
     }
   
-    dislikeCard(cardId) {
+    deleteLike(cardId) {
       return customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
         headers: this._headers,
         method: "DELETE",

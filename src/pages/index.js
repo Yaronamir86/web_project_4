@@ -32,7 +32,11 @@ import { api } from "../components/Api";
 
 
 const profileModal = new PopupWithForm(".modal_type_edit-profile", (data) => {
-  userInfo.setUserInfo(data.user, data["about"]);
+  api.editProfile(data.user, data["about"])
+  .then((res) => {
+    userInfo.setUserInfo(res.name, res["about"]);
+  })
+  
 });
 profileModal.setEventListeners();
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,7 +59,13 @@ placeModal.setEventListeners();
 ////////////////////////////////avatar-modal////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 const avatarModal = new PopupWithForm(".modal_type_avatar", (data) => {
-  userInfo.setAvatarInfo(data["Image link"]);
+  api
+  .editAvatar(data["Image link"])
+  .then((res) => {
+    userInfo.setAvatarInfo(res.avatar);
+    avatarModal.close();
+  })
+  
 });
 avatarModal.setEventListeners();
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -67,7 +77,7 @@ previewModal.setEventListeners();
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////delete-modal/////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-const deleteModal = new PopupWithButton(".modal_type_delete");
+const deleteModal = new PopupWithButton(".modal_type_delete")
 deleteModal.setEventListeners();
 
 
@@ -116,12 +126,12 @@ function generateCard(data) {
       const isAlreadyLiked = card.isliked();
 
       if(isAlreadyLiked) {
-        api.dislikeCard(id)
+        api.deleteLike(id)
         .then((res) => {
           card.dislikeCard(res.likes)
         });
       } else {
-        api.likeCard(id)
+        api.addLike(id)
         .then((res) => {
           card.likeCard(res.likes)
         });

@@ -17,7 +17,7 @@ export class UserInfo {
     this._profileJob.textContent = job;
   }
 
-  setAvatarInfo(avatarSrc) {
-    this._avatar.src = avatarSrc
+  setAvatarInfo(avatar) {
+    this._avatar.src = avatar
   }
 }
