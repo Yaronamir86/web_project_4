@@ -27,23 +27,24 @@ import { api } from "../components/Api";
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////modal instantiation///////////////////////////////////////
+//////////////////////////////profile-modal///////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////
+
 const profileModal = new PopupWithForm(".modal_type_edit-profile", (data) => {
   userInfo.setUserInfo(data.name, data["about-me"]);
 });
 profileModal.setEventListeners();
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////place-modal//////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 const placeModal = new PopupWithForm(".modal_type_place", (data) => {
   api
-    //.createCards({ name: data["Title"], link: data["Image link"] })
-    .createCards(data)
+    .createCards({ name: data["Title"], link: data["Image link"] })
+    //.createCards(data)
     .then((res) => {
       generateCard(res)
         //renderCard({ name: data["Title"], link: data["Image link"] });
-       // renderCard(res)
+        renderCard(res)
        placeModal.close();
         
     });
@@ -104,19 +105,26 @@ function generateCard(data) {
       deleteModal.open();
       deleteModal.setAction(() => {
         api.deleteCards(id)
-        .then(res => {
-          console.log('card is deleted', res)
+        .then((res) => {
           card.removeCard()
           deleteModal.close()
         })
       })
     },
     (id) => {
-      api.likeCard(id)
-        .then(res => {
-          card.likeCard()
-          console.log('res', res);
+      const isAlreadyLiked = card.isliked();
+
+      if(isAlreadyLiked) {
+        api.dislikeCard(id)
+        .then((res) => {
+          card.dislikeCard(res.likes)
         });
+      } else {
+        api.likeCard(id)
+        .then((res) => {
+          card.likeCard(res.likes)
+        });
+      }
     },
     userId
   );

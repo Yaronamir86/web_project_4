@@ -7,11 +7,11 @@ export class Card {
     this._handleCardClick = handleCardClick;
     this._handleDeleteCard = handleDeleteCard;
     this._handleLikeIcon = handleLikeIcon;
-    this._likes = data.likes;
-    this._id = data.id;
+    this._id = data._id;
     this._userId = userId;
     console.log('this._userId', this._userId)
     this._ownerId = data.owner._id;
+    this._likes = data.likes;
   }
 
   _getTemplateClone = () => {
@@ -21,11 +21,10 @@ export class Card {
       .cloneNode(true);
     return cardElement;
   };
-  ////////////
-
-  //_handleLikeIcon = (evt) => {
-   // evt.target.classList.toggle("element__like-btn_active");
-  //};
+  
+  isliked(){
+    return this._likes.some((person) => person.id === this.userId)
+  }
 
   removeCard () {
     this._element.remove();
@@ -33,10 +32,23 @@ export class Card {
     this._element = null;
   }
 
-  likeCard () {
+  likeCard (newLikes) {
+    this._likes = newLikes
+    this._element.querySelector(".element__like-count").textContent = this._likes.length
+    
     this._element.querySelector(".element__like-btn").
       classList.add("element__like-btn_active")
-    }
+     }
+
+
+  dislikeCard (newLikes) {
+    this._likes = newLikes
+    this._element.querySelector(".element__like-count").textContent = this._likes.length
+      
+     this._element.querySelector(".element__like-btn").
+      classList.remove("element__like-btn_active")
+      }
+
   
 
   _setEventListeners() {
@@ -54,10 +66,9 @@ export class Card {
     this._deleteButton = this._element.querySelector(".element__trash-btn");
     this._likeButton = this._element.querySelector(".element__like-btn");
     this._likeCount = this._element.querySelector(".element__like-count");
-    const isliked = this._likes.some((person) => person.id === this.userId)
 
-    if(isliked) {
-      this.likeCard()
+    if(this.isliked) {
+      this.likeCard(this._likes)
     }
     this._element.querySelector(".element__title").textContent = this._text;
     this._ownerId !== this._userId &&
