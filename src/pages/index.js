@@ -92,9 +92,8 @@ let userId
 Promise.all([api.getInitialCards(), api.getUserInfo()])
 .then(([cardData, userData]) => {
   userId = userData._id
-  console.log('userId', userId)
+  
   previewSection.render(cardData);
-
   userInfo.setUserInfo(userData.name, userData.about);
 })
 
@@ -122,19 +121,17 @@ function generateCard(data) {
         })
       })
     },
-    (id) => {
-      const isAlreadyLiked = card.isliked();
-
-      if(isAlreadyLiked) {
-        api.deleteLike(id)
+    () => {
+      if(card.isLiked()) {
+        api.removeLike(card.getId())
         .then((res) => {
-          card.dislikeCard(res.likes)
+          card.setLikes(res.likes)
         });
       } else {
-        api.addLike(id)
+        api.addLike(card.getId())
         .then((res) => {
-          card.likeCard(res.likes)
-        });
+          card.setLikes(res.likes)
+      });
       }
     },
     userId

@@ -62,7 +62,7 @@ export class Api {
       });
     }
   
-    deleteLike(cardId) {
+    removeLike(cardId) {
       return customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
         headers: this._headers,
         method: "DELETE",
