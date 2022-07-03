@@ -10,20 +10,20 @@ a Responsive web application for sharing images in a social way which is actuall
 
  ***technologies and features***
 
- *FIGMA
- *GIT
+ **FIGMA**
+ **GIT**
   - GIT HUB
   - GIT BASH
- *HTML5
- *CSS3
+ **HTML5**
+ **CSS3**
   - flat BEM file structure
   - grid layouts
   - flex box
- *JS 
+ **JS** 
   - ES6 classes
   - OOP 
   - IIFE 
- *NPM
+ **NPM**
   - Webpack
   - Babel
   - postcss
