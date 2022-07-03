@@ -99,6 +99,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
   
   previewSection.render(cardData);
   userInfo.setUserInfo(userData.name, userData.about);
+  userInfo.setAvatarInfo(userData.avatar);
 })
 
 const previewSection = new Section(
