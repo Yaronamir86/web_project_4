@@ -32,10 +32,12 @@ import { api } from "../components/Api";
 
 
 const profileModal = new PopupWithForm(".modal_type_edit-profile", (data) => {
+  profileModal.renderLoading(true, "saving...")
   api.editProfile(data.user, data["about"])
   .then((res) => {
     userInfo.setUserInfo(res.name, res["about"]);
   })
+  .finally(() => profileModal.renderLoading(false));
   
 });
 profileModal.setEventListeners();
@@ -43,27 +45,31 @@ profileModal.setEventListeners();
 ////////////////////////////place-modal//////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 const placeModal = new PopupWithForm(".modal_type_place", (data) => {
+  placeModal.renderLoading(true, "Creating...");
   api
     .createCards({ name: data["Title"], link: data["Image link"] })
     .then((res) => {
       generateCard(res)
         renderCard(res)
-       placeModal.close();
-        
-    });
+       placeModal.close(); 
+    })
+    .finally(() => placeModal.renderLoading(false));
+   
 });
+
 placeModal.setEventListeners();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////avatar-modal////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 const avatarModal = new PopupWithForm(".modal_type_avatar", (data) => {
+  avatarModal.renderLoading(true, "saving...")
   api
   .editAvatar(data["Image link"])
   .then((res) => {
     userInfo.setAvatarInfo(res.avatar);
     avatarModal.close();
   })
-  
+  .finally(() => avatarModal.renderLoading(false));
 });
 avatarModal.setEventListeners();
 /////////////////////////////////////////////////////////////////////////////////////////////////////
