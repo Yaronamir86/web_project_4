@@ -35,7 +35,7 @@ export class Api {
             method: "PATCH",
             body: JSON.stringify({
               avatar: url,
-            })
+            })  
         });
     }
   

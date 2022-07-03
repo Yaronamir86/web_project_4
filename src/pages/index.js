@@ -45,10 +45,8 @@ profileModal.setEventListeners();
 const placeModal = new PopupWithForm(".modal_type_place", (data) => {
   api
     .createCards({ name: data["Title"], link: data["Image link"] })
-    //.createCards(data)
     .then((res) => {
       generateCard(res)
-        //renderCard({ name: data["Title"], link: data["Image link"] });
         renderCard(res)
        placeModal.close();
         
