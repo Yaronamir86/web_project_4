@@ -18,6 +18,7 @@ export class Card {
     this._userId = userId;
     this._ownerId = data.owner._id;
     this._likes = data.likes;
+    this._likeCount = data.likes
   }
 
   getId() {
@@ -54,18 +55,16 @@ export class Card {
     this._likes = newLikes;
 
     const likeAmount = this._likes.length;
-    this._element.querySelector(".element__like-count").textContent =
+    this._likeCount.textContent =
       likeAmount;
 
     const cardIsLikedByCurrentUser = this.isLiked ()
 
     if(cardIsLikedByCurrentUser) {
-      this._element
-        .querySelector(".element__like-btn")
+      this._likeButton
         .classList.add("element__like-btn_active");
     }else{
-      this._element
-        .querySelector(".element__like-btn")
+      this._likeButton
         .classList.remove("element__like-btn_active");
     }
   }

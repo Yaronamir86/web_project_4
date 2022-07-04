@@ -32,7 +32,9 @@ const profileModal = new PopupWithForm(".modal_type_edit-profile", (data) => {
     .editProfile(data.user, data["about"])
     .then((res) => {
       userInfo.setUserInfo(res.name, res["about"]);
+      profileModal.close();
     })
+    .catch((err) => console.log(err))
     .finally(() => profileModal.renderLoading(false));
 });
 profileModal.setEventListeners();
@@ -46,10 +48,11 @@ const placeModal = new PopupWithForm(".modal_type_place", (data) => {
   api
     .createCards({ name: data["Title"], link: data["Image link"] })
     .then((res) => {
-      generateCard(res);
+      //generateCard(res);
       renderCard(res);
       placeModal.close();
     })
+    .catch((err) => console.log(err))
     .finally(() => placeModal.renderLoading(false));
 });
 
@@ -67,6 +70,7 @@ const avatarModal = new PopupWithForm(".modal_type_avatar", (data) => {
       userInfo.setAvatarInfo(res.avatar);
       avatarModal.close();
     })
+    .catch((err) => console.log(err))
     .finally(() => avatarModal.renderLoading(false));
 });
 avatarModal.setEventListeners();
@@ -98,8 +102,9 @@ Promise.all([api.getInitialCards(), api.getUserInfo()]).then(
     previewSection.render(cardData);
     userInfo.setUserInfo(userData.name, userData.about);
     userInfo.setAvatarInfo(userData.avatar);
-  }
-);
+  })
+  .catch((err) => console.log(err));
+
 
 const previewSection = new Section(
   {
@@ -121,18 +126,21 @@ function generateCard(data) {
         api.deleteCards(id).then((res) => {
           card.removeCard();
           deleteModal.close();
-        });
+        })
+        .catch((err) => console.log(err));
       });
     },
     () => {
       if (card.isLiked()) {
         api.removeLike(card.getId()).then((res) => {
           card.setLikes(res.likes);
-        });
+        })
+        .catch((err) => console.log(err));
       } else {
         api.addLike(card.getId()).then((res) => {
           card.setLikes(res.likes);
-        });
+        })
+        .catch((err) => console.log(err));
       }
     },
     userId
@@ -184,4 +192,6 @@ addProfileButton.addEventListener("click", () => {
 
 avatar.addEventListener("click", () => {
   avatarModal.open();
+  avatarFormValidator.resetValidation();
+  avatarFormValidator.hideErrors();
 });

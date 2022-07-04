@@ -9,7 +9,7 @@ export class Api {
     _customFetch = (url, headers) =>
     fetch(url, headers)
       .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-      .catch(console.log);
+      //.catch(console.log);
   
     getInitialCards() {
       return this._customFetch(`${this._baseUrl}/cards`, {
