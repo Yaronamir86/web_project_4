@@ -1,16 +1,15 @@
 import { Popup } from "./Popup";
 
-export class PopupWithButton extends Popup {
+export class PopupWithConfirmation extends Popup {
   setAction(action) {
     this._submitHandler = action;
   }
 
   setEventListeners() {
     this._popupElement.addEventListener("submit", (e) => {
-        e.preventDefault()
-       this._submitHandler();
-    })
-   super.setEventListeners;
+      e.preventDefault();
+      this._submitHandler();
+    });
+    super.setEventListeners;
   }
- 
 }

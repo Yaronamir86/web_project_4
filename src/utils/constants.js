@@ -1,31 +1,3 @@
-export const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg",
-  },
-];
-
-
 export const settings = {
   inputSelector: ".form__input",
   submitButtonSelector: ".form__button",
@@ -60,16 +32,38 @@ export const trashIcon = document.querySelector(".element__trash-btn");
 //const placeLink = document.querySelector(".form__input_type_image-link");
 //export const previewModal = document.querySelector(".modal_type_preview");
 //export const previewCloseBtn = document.querySelector(
- // ".modal__close-btn_type_preview"
+// ".modal__close-btn_type_preview"
 //);
 //export const previewTitle = document.querySelector(
 //  ".modal__title_type_preview"
 //);
 //export const previewImage = document.querySelector(
- // ".modal__image_type_preview"
+// ".modal__image_type_preview"
 //);
 
-
-
-
-
+//export const initialCards = [
+// {
+//   name: "Yosemite Valley",
+//    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+//  },
+//  {
+//    name: "Lake Louise",
+//    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+//  },
+//  {
+//    name: "Bald Mountains",
+//    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+//  },
+//  {
+//    name: "Latemar",
+//    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
+//  },
+//  {
+//    name: "Vanoise National Park",
+//    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+//  },
+//  {
+//    name: "Lago di Braies",
+//    link: "https://code.s3.yandex.net/web-code/lago.jpg",
+//  },
+//];
